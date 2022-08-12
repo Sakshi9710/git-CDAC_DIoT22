@@ -1,0 +1,272 @@
+Official Blog of mosquitto:
+https://mosquitto.org/blog/
+https://github.com/ralight - mosquitto developer
+---------------------------------------------------------------
+default configuration file location:
+
+/etc/mosquitto
+
+Name of the file: mosquitto.conf
+
+#Read documentation:
+
+/usr/share/doc/mosquitto/examples/mosquitto.conf
+
+cd /usr/share/doc/mosquitto/examples
+
+cat mosquitto.conf
+-------------------------------------------------------------
+increasing the max queued size
+
+Note: if you have to do any changes in the default configuration:
+create a file with .conf extension in below directory path:
+/etc/mosquitto/conf.d
+e.g. port.conf
+
+So once you add some statements to make changes from the default configuration:
+It is must to restart the broker in order to take the changes in place.
+
+
+cd /etc/mosquitto/conf.d
+
+create a file say : localconfig.conf using any prefered editor:
+
+create the file with sudo and also open it with sudo
+
+sudo nano localconfig.conf 
+#add the below line to increase the message size of queue to 65000 (default to 10000)
+max_queued_messages 65000
+max_queued_bytes 650000
+sudo service mosquitto restart
+---------------------------------------
+sudo service mosquitto status
+sudo systemctl status mosquitto
+------------------------------------------------------------------------------------
+
+Now checkout the persistant session with mosquitto_pub
+
+mosquitto_sub -t cdac/acts/diot --id subtest --qos 1 -h localhost -p 1883
+
+mosquitto_pub -t cdac/acts/diot --id pubtest -c --qos 1 -h localhost -p 1883 -l
+
+#Publish some message
+
+stop the broker
+sudo service mosquitto stop
+
+publish some more message
+
+#restart the broker
+
+sudo service mosquitto restart
+
+--------------------------------------------------------------------------------------
+To change the default port 1883
+
+open your localconfig.conf file and add below line - to start broker at 5010
+
+port 5010
+
+& restart the broker
+
+#check that broker is running at changed port or not using below command
+
+sudo netstat -naltp | grep mosquitto
+
+#How to run multiple mosquitto services on the same host
+
+#add below lines
+listener 5020
+protocol mqtt
+
+listener 5030
+protocol mqtt
+
+-----------------------
+Note: Now mosquitto broker is available to use
+at three ports : 5010 5020 5030
+
+-----------------------------------------------------------------------
+Assignment:
+---------------------------------------------------------------------
+Publish with port 5010
+Subscribe with port 5020
+---------------------------------------------------------------------
+username and password based authentication at broker
+----------------------------------------------------------------
+What does the above statement means:
+Restricting the client access without username and password
+
+allow_anonymous [ true | false ]
+
+    Boolean value that determines whether clients that connect without providing a username are allowed to connect. If set to false then another means of connection should be created to control authenticated client access
+
+
+The username referred to here is the same as in :
+
+password_file 
+
+-------------------------------------------------------------------------
+step1 : 
+create username and password in a file without any extension
+#format to be used
+username:password
+-------------------------------------------------------------------------
+--> Navigate to below directory
+cd /etc/mosquitto
+sudo nano pwfile     #pwfile is pasword file without any extension (however you can take any other name)
+
+iot:iot1234         #iot is username and iot1234 is pasword (remember the password)
+
+-------------------------------------------------------------------------------------------------------
+Next step : 
+Encrypt the password with mosquitto_passwd utility
+
+ -b : run in batch mode to allow passing passwords on the command line.
+ -c : create a new password file. This will overwrite existing files.
+ -D : delete the username rather than adding/updating its password.
+ -U : update a plain text password file to use hashed passwords.
+
+
+
+sudo mosquitto_passwd -U /etc/mosquitto/pwfile  #encrypt the password (hashed)
+
+#check p[assword is Hashed or not !!
+
+cat /etc/mosquitto/pwfile 
+
+#sample output will look like this:
+
+iot:$6$d/+qa+VkGVzy/v0n$SEEzF6mjXQJHMoF7/NtB9SLRVxb6gcqdClq4l4j2HxZ0GCBMvjER98rXEgdr7e1yss2CU+z4a+R3BjEzdxJyyw==
+
+navigate to your localconfig.conf file in /etc/mosquitto/conf.d 
+
+cd /etc/mosquitto/conf.d
+
+sudo nano localconfig.cong
+
+#add these two lines without space
+
+allow_anonymous false
+password_file /etc/mosquitto/pwfile
+
+Next Step:
+sudo service mosquitto restart 
+
+#Try to publish and subscribe some msg.
+
+mosquitto_pub -t cdac/diot/temp -h localhost -p 5010 -l
+
+
+mosquitto_sub -t cdac/diot/temp -h localhost -p 5010
+
+------------------
+-u ---> username (use your name mentioned in pwfile)
+-P ---> password (use your password mentioned in pwfile)
+
+mosquitto_sub -t cdac/diot/temp -u iot -P iot1234 -h localhost -p 5010
+mosquitto_pub -t cdac/diot/temp -u iot -P iot1234 -h localhost -p 5010 -l
+
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

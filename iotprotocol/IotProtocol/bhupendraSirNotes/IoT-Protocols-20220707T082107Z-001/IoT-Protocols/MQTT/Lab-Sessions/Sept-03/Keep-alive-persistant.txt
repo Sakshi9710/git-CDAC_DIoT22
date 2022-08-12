@@ -1,0 +1,114 @@
+Keep Alive interval -k, --keepalive (To avoid half open connections)
+
+The number of seconds between sending PING commands to the broker for the purposes of informing it we are still connected and
+functioning. Defaults to 60 seconds.
+
+--> can be used at both the ends (pub/sub)
+---> to inform broker after a defined interval set by programmer (if not used default=60 seconds) that connection is still maintained while no activity was done during the interval specified.
+
+e.g - 
+    -> No message published by the publisher
+    -> No message received by the subscriber
+    
+Once the keep alive interval is elapsed client must send a PINGREQ packet to broker and broker will send PINGRESP as a response.
+
+Minimum keep alive interval accepted with mosquitto_pub/sub utility is 5 seconds
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+#Setting up keep alive interval to 20 seconds
+
+mosquitto_pub -t diot/keepalive/demo --qos 1 -r --will-topic diot/issues --will-qos 1 --will-retain --will-payload "Not getting the conecpts" -k 20 -h localhost -p 1883 -l 
+
+mosquitto_pub -t diot/keepalive/demo --qos 1 -r --will-topic diot/issues --will-qos 1 --will-retain --will-payload "Not getting the conecpts" --keepalive 20 -h localhost -p 1883 -l 
+
+
+mosquitto_sub -t diot/# -k 20 -h localhost -p 1883
+
+mosquitto_sub -t diot/# --keepalive 20 -h localhost -p 1883
+
+#To test the Keep alive feature : 
+
+Don't send any message from publisher in 20 seconds (specified interval in the command) to test the feature of keep alive interval
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Persistant Session:
+------------------------------------------------------------------
+Always try to use at subscriber end:
+-------------------------------------------
+What are the things that are stored in persistant session:
+1. All topics that it to which it subscribed along with the qos level of each.
+2. All unconfirmed QOS-1 and QOS-2 message sent to those topics
+3. All new QOS-1 or QOS-2 message sent to those topics while the client is offline.
+------------------------------------------------------------------------------------------
+Two options to use for communication:
+1. Non Persistant session
+2. Persistant Session
+
+Non persistant Session:
+
+1. The Broker doesn't store any subscription information or undelivered message for the client.
+2. This mode is only an ideal mode when client only publishes the message.
+
+------------------------------------------------------------------------------------------------
+
+
+Persistant Session:
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Subscriber is interested to recceive all the messages that has been published to a topic having qos1 and qos 2 even if subscriber goes offline.
+
+-c, --disable-clean-session (to be used with pub/sub utility)
+
+Disable the 'clean session' flag. This means that all of the subscriptions for the client will be maintained after it disconnects, along with subsequent QoS 1 and QoS 2 messages that arrive. When the client reconnects, it will receive all of the queued messages.
+
+Note:  If using this option, the client id must be set manually with --id, -i
+
+mosquitto_sub -t cdac/acts/diot/temp -i writankar -c -q 1 -h localhost -p 1883 -d  
+
+(ctrl+C) - got disconnected after requesting persistant session
+
+mosquitto_pub -t cdac/acts/diot/temp --qos 1 -h localhost -p 1883 -d -l
+
+(subscribe again --- will receive all the published message during it was offline)
+
+mosquitto_sub -t cdac/acts/diot/temp -i writankar -c -q 1 -h localhost -p 1883 -d  
+-----------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

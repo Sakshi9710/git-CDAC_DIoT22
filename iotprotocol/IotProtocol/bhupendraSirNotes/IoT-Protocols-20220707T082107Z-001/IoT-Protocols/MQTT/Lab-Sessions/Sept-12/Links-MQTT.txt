@@ -1,0 +1,8 @@
+NodeJs MQTT - Github Link - paho-mqtt
+------------------------------------------------
+https://github.com/mqttjs/MQTT.js/
+
+-----------------------------------------------
+Install the mqtt package
+
+npm install mqtt --save

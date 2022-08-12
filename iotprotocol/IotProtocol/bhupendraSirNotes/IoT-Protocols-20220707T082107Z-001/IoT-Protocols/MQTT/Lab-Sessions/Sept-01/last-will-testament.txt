@@ -1,0 +1,192 @@
+01.09.2020
+-------------------
+Last Will and Testament (features/flags is used at the publisher end)
+------------------------------------------------------------------------------
+will-tpoic     (This topic is used to send message to broker which will be stored at broker at this topic and will be send by broker to
+				subscriber in case of ungraceful disconnect of the publisher)
+will-message 
+will-QOS
+----------------------------------
+--will-payload
+           Specify a message that will be stored by the broker and sent out if this client disconnects unexpectedly.
+           This must be used in conjunction with --will-topic.
+
+       --will-qos
+           The QoS to use for the Will. Defaults to 0. This must be used in conjunction with --will-topic.
+
+       --will-retain
+           If given, if the client disconnects unexpectedly the message sent out will be treated as a retained
+           message. This must be used in conjunction with --will-topic.
+
+       --will-topic
+           The topic on which to send a Will, in the event that the client disconnects unexpectedly.
+-----------------------------------------------------------------------------------------------------------------------------
+-i ---client-id
+
+---------------------
+Graceful disconnect : DISCONNECT PACKET is sent by client before disconnecting from the broker (willingly disconnecting from the broker)
+
+ mosquitto_pub -t cdac/acts/diot/temp -h localhost -p 1883 -m "temp is 20" -d    
+
+ Note: observe the DISCONNECT FLAG 
+
+GRACEFUL DISCONNECT : publisher sends a DISCONNECT packet to the broker before closing the connection.
+
+UNGRACEFUL DISCONNECT : publisher doesn't send a DISCONNECT packet to the broker e.g.
+
+ mosquitto_pub -t cdac/acts/diot/temp -h localhost -p 1883 -l -d
+ 
+(use Ctrl + c ) to close the connection 
+------------------------------------------------------
+
+repeat a message with -m flag (--repeat <count> , --repeat-delay <seconds>
+
+mosquitto_pub -t cdac/acts/diot/temp -h localhost -p 1883 -m "Hello World" --repeat 2
+
+mosquitto_pub -t cdac/acts/diot/temp -h localhost -p 1883 -m "Hello World" --repeat 2 --repeat-delay 10  
+
+--------------------------------------------------------------------------------------------------------------
+
+Send the contents of a file in two ways:
+---------------------------------------------------
+
+Note: This command should be run in the same folder where both the files are present or specify the absolute path e.g. /home/diot/iplab
+
+mosquitto_pub -t pune/user1/kitchentemp -f ./dht11temp.txt -h localhost -p 1883
+
+mosquitto_pub -t pune/user1/kitchenhumi -s < ./dht11humidity.txt -h localhost -p 1883
+
+mosquitto_sub -t pune/user1/kitchentemp -h localhost -p 1883
+mosquitto_sub -t pune/user1/kitchenhumi -h localhost -p 1883
+
+--------------------------------------------------------------------
+Assignment Q1
+--------------------------------------------------------------------------------------------
+Create a JSON file say sensor-data.json having below details: (use -f flag)
+
+Sensor-Name, ManufacturerName, Temperature, Humidity, Location
+and send the contents of this file using mosquitto_pub utility at a topic home/sensor/dht22
+
+Recommended : Sensor-Name : DHT22
+
+Subscribe the same topic to receive the data
+-----------------------------------------------------------------------------------------
+Assignment Q2 (use -s flag)
+
+Create a JSON file say aqi-data.json having below details:
+
+City_Name, AQI, Weather-status
+
+and send the contents of this file using mosquitto_pub utility at a topic city/weatherupdate
+
+Subscribe the same topic to receive the data
+
+------------------------------------------
+
+
+JSON file: sensor-data.json
+key value pair
+
+{
+  "Sensor-Name"   : "DHT22",
+  "ManufacturerName" : "Texas Instruments",
+  "Temperature" : 27,
+  "Humidity"    : 90,
+  "Location"    : "Pashan-Pune"
+}
+
+
+Soln 1:
+mosquitto_pub -t home/sensor/dht22 -h localhost -p 1883 -f ./sensor-data.json 
+mosquitto_sub -t home/sensor/dht22 -h localhost -p 1883
+
+Addition in question1 : publish this sensor data thrice at a interval of 10 seconds
+
+
+Solution:
+mosquitto_pub -t home/sensor/dht22 -h localhost -p 1883 -f ./sensor-data.json --repeat 3 --repeat-delay 10
+
+Assignment: (using multi-threading)
+------------------------------------------
+Write c code snippet using POSIX thread library to write some data into a text file and publish the data of the file using mosquitto_pub
+utility.
+Hint : Thread 1 should write the data and should be locked until it finishes its execution
+	 : Thread 2 should read that data using -f flag of mosquiito_pub utility and publish it to the broker
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Publisher side :
+
+mosquitto_pub -t cdac/acts/temp --will-topic sensor/issues --will-payload "Sensor stops sendng data" -h localhost -p 1883 -l
+
+(do ctrl + c after sending message and check subscriber side (the topic of wwill-topic) 
+
+Subscribe side:
+
+mosquitto_sub -t cdac/acts/temp -h localhost -p 1883   #normal message
+
+mosquitto_sub -t sensor/issues -h localhost -p 1883    #will-message in case of ungraceful disconnect
+
+ToDO:
+
+--will-retain
+
+--will-payload
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

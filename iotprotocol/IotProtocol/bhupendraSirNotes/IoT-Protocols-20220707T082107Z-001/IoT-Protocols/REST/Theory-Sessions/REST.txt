@@ -1,0 +1,73 @@
+https://nordicapis.com/defining-stateful-vs-stateless-web-services/ - refer for stateless/statful
+
+restcookbook
+
+restapitutorial
+
+mozila developer page for REST
+
+----------------------------------------Oauth2.0 - Authentication
+
+stateless -  (Server)
+-----> Each request is treated as a new request at the server
+ --->  No data from the previous request is used in the next request.
+
+CRUD:
+
+CREATE : POST   - create a new resource
+READ   : GET    - check all the available resources / specific resource
+UPDATE : PUT    - update a existing resource
+DELETE : DELETE  - Delete a existing resource
+--------------------------------------------
+Idempotent and Safe:
+
+HTTP/1.1 - Half Duplex communication
+
+2.X.X - success
+3.X.X - redirection eg. http to websocket connection upgrade
+4.X.X - client error
+5.X.X - server error
+------------------------------------------------------------------
+
+
+
+Client - Server
+
+request  <---> response
+
+client - Server - Server
+
+(Server in the middle (proxy server)
+
+Client
+192.168.0.1 (This is your hostmachine) - IRCTC doesn't allow to book 2 tickets from same ip (tatkal)
+
+Server : 13.10.0.150 (Destination Server) - cdac.in
+
+college network - (College Public IP) - IRCTC
+
+HM1 - stu1   -----
+HM2 - stu2   -----   College gateway (Main server) - Router --- IRTCT (public ip)
+HM3 - stu3   -----   
+
+-------
+Tor broeswer  proxy server - IRCTC Server
+192.168.0.1	 - 47.90.100.120 - 13.20.125.160
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

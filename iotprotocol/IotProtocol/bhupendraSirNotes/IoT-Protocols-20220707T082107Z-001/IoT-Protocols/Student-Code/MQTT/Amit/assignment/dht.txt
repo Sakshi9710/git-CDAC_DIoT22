@@ -1,0 +1,8 @@
+dht11/temperature
+25.10
+dht11/humdity
+45.00
+dht11/temperature
+25.10
+dht11/humdity
+45.00

@@ -1,0 +1,8 @@
+#code python
+
+mysql connectivity - w3schools 
+
+topic name
+msg
+serial number
+timestamp

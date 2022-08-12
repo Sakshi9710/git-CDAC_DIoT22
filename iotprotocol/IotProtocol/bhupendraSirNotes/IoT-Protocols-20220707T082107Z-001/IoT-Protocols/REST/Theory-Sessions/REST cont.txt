@@ -1,0 +1,59 @@
+REST cont..
+-----------------
+METHODS : 
+
+1. GET			- fetch some information from server
+2. POST
+3. PUT
+4. DELETE
+
+Idempotent (RFC7231):
+
+A request method is considered "idempotent" if the intended effect on
+the server of multiple identical requests with that method is the
+same as the effect for a single such request
+
+
+URL : http://www.iotfeb2020platform.com/led_status
+
+GET - http://www.iotfeb2020platform.com/led_status   (Multiple request should have same effect - idempotent)
+
+Client (GET- 100 times) -- Server (URL)  
+
+Think Like:
+
+What first request is doing.. is the second request with same parameter is doing the same?
+-----------------------------------------------------------------------------------------------
+Method		Idempotent 					Safe
+
+GET			 YES						YES
+
+POST		 NO							NO
+
+PUT			 YES						NO
+
+DELETE		 YES						NO
+
+YES/NO
+
+YES - Sandeep, Bhakti, Nikhil
+NO - Wri,Rasika,AMIT, ASHISH, Prreity
+
+
+DELETE --data {"name" : "xyz", "age": 23}		1st request					   id=3
+DELETE --data {"name" : "xyz", "age": 23}		2nd request					   id=3
+DELETE --data {"name" : "xyz", "age": 23}		3rd request					   id=3
+
+POST --data {"name" : "xyz", "age": 23}		1st request					
+POST --data {"name" : "xyz", "age": 23}		2nd request		
+POST --data {"name" : "xyz", "age": 23}		3rd request		
+POST --data {"name" : "xyz", "age": 23}		4th request		
+
+PUT --data {"name" : "xyz", "age": 23}		1st request		  - data update (if any existing parameter was changed)			
+PUT --data {"name" : "xyz", "age": 23}		2nd request		
+PUT --data {"name" : "xyz", "age": 23}		3rd request		
+PUT --data {"name" : "xyz", "age": 23}		4th request	
+
+
+
+
