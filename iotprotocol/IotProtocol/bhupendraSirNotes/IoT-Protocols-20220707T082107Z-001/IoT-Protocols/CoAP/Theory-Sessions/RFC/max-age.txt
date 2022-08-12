@@ -1,0 +1,11 @@
+max-age. 
+The max-age directive states the maximum amount of time in seconds that 
+fetched responses are allowed to be used again (from the time when a request 
+is made). 
+For instance, “max-age=90” indicates that an 
+asset can be reused (remains in the browser cache) for the next 90 seconds
+-------------------------------------------------------------------------------
+Read
+CoAP Protcol: Step-by-step Guide
+Dzone by Framcesco azzola
+--------------------------------------------------------------------------------

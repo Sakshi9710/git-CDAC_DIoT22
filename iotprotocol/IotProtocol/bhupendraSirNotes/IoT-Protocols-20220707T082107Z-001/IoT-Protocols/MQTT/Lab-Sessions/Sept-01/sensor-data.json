@@ -1,0 +1,7 @@
+{
+  "Sensor-Name"   : "DHT22",
+  "ManufacturerName" : "Texas Instruments",
+  "Temperature" : 27,
+  "Humidity"    : 90,
+  "Location"    : "Pashan-Pune"
+}

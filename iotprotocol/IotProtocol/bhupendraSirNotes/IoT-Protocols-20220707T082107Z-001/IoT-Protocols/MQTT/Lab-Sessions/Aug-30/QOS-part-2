@@ -1,0 +1,158 @@
+30.08.2020
+----------------------
+QOS Part - II
+--------------------------------
+RECAP:
+How to setup QOS 0 and QOS -1 ?
+What are the packets that are getting exchanged between client and broker in QOS -0 and QOS -1
+OASIS -Docs (Packet Type - page 16, 17) return codes page -32
+----------------------------------------------------------------------------------------------------
+Ques 1:
+What are the packet types that is exchaged between publisher and subscriber in QOS-0?
+Answer:
+PUBLISH
+Ques 2: What are the packet types that is exchaged between publisher and subscriber in QOS-1?
+PUBLISH  client to broker  (client---> publisher)
+PUBACK   broker to client   (client --> publisher)
+--------------------------------------------------------------------------------------------------
+There are three host machines
+H1 - Writankar
+H2 - aSHISH
+H3 - bHAKTI
+---------------------------------------------------------
+H1 - PUBLISHER    -- Mosquitto_pub (moqsquitto-clients)
+H2 - BROKER  --  BROKER
+H3 - SUBSCRIBER --- mosquitto_sub
+---------------------------------------------------------------------------------------
+What is we have only host1 and host 2 then how communication setup will be made?
+H1 - Publisher + Broker
+H2 - Subscriber
+
+OR
+
+H1 - publisher 
+H2 - subscriber + broker
+
+OR
+
+H1 - publisher + subscriber
+
+H2 - broker
+-----------------------------------------------------------------------------------------------
+If you have only one host machibe?
+
+Host - Publisher + Subscriber + Broker
+----------------------------------------------------------------------------------------------
+H1, H2, H3, H4, H5, H6, H7, H8, H9, H10
+oNLY ONE hOST Machine is reqired for broker other can be used as pub/sub as per app context.
+----------------------------------------------------------------------------------------------
+
+QOS - 2
+
+mosquitto_pub -t pune/acts/diot/humidity -h localhost -p 1883 --qos 2 -l -d
+
+mosquitto_sub -t pune/acts/diot/humidity -h localhost -p 1883 --qos 2 -d 
+
+Try the above commands and observe the packet type
+PUBLISH - client --> broker
+PUBREC  - broker --> client
+PUBREL  - cleint - broker
+PUBCOMP - broker - client
+----------------------------------------------------------------------------------------------
+Assignment:
+What if a message is published with QOS - 0 and subscriber with QOS-1 on the same topic?
+With what QOS message will be received by subscriber ?
+
+publisher -- qos o
+subscriber -- qos 1
+
+Answer is QOS - 0 ...
+Why?
+---------------------------------------------------------------------------------------------
+Any message published with lower qos will be delivered to subscriber to the same QOS even if subscriber has subscribed to the higher QOS.
+Note : Broker doesn't have any privilige to upgrade any published message
+-------------------------------------------------------------------------------------------------------------------------------------------
+What if a message is published with higher qos say qos--2 and subscribed with QOS-1 (Lower QOS)?
+Answer is QOS - 1
+-----------------------
+Why?
+Higher QOS message can be degraded to lower QOS (if requsted by the subscriber but can't be upgraded).
+as HIGHER QOS carry the necessary packets that is required for lower qos while lower qos doesn't carry the
+necessary packet which is required in higher qos
+-----------------------------------------------------------------------------------------------------------
+Headers part
+-------------------------------
+Control Field --> Message Type /Control Paket Type (4 Bit MSB) + Control Flag (4 Bits) LSB
+				  (7-4 bits)										(3-0 bits)
+Message Types --> CONNECT, PUBLISH, PUBACK etc,
+
+
+PUBLISH a message with QOS - 0 (HEADER Representation)
+---------------------------------------- 
+What will be control field value for PUBLISH message/control packet type
+
+7 6 5 4 3 2 1 0 - 8 bits representation (Binary)  -- (We have to convert decimal in to binary from OASIS docs (page 16-17)
+------------------
+0 0 1 1 0 0 0 0 = 48 (Decimal value)
+-----------------------------------------------------------------
+
+Assignment:
+PUBLISH with QOS-2 and fill control field of the MQTT Header
+-----------------------------------------------------------------
+00110100 ---> 4+16+32=52 (Decimal value)
+
+0x2^0+0x2^1+1x2^2+0x2^3+1x2^4+1x2^5+0x2^6+0x2^7 = 52
+
+What will be control field decimal value for connect packet?
+
+00010000 = 16
+
+QUES : PUBLISH WITH QOS 1?
+
+00110010 - 50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

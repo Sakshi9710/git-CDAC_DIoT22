@@ -1,0 +1,206 @@
+Function Node:
+----------------------
+Generate a number between 1 to 50
+
+msg.payload = Math.floor(Math.random() * 51); 
+return msg;
+
+------------------------------------------------------
+Node-Red Wrtiting functions:
+-----------------------------------------------------
+
+https://nodered.org/docs/user-guide/writing-functions
+
+Node-Red Cook Book: (Documentation - cookbook)
+
+https://cookbook.nodered.org/
+
+----------------------------------------------------------
+How to control Arduino using Node-red
+-------------------------------------------
+Step 1 : 
+
+Open Arduino ide:
+Examples - upload standard firmata( A protcol to communicate with arduino through software (node-red) from host machine)
+
+manage-pallete - install
+
+node-red-node-arduino
+
+Arduino node - select 
+
+
+Properties - Arduino (Port setting) - /dev/ttyACM*
+
+Type : Digital (e.g LED Blink)
+
+PIN - Arduino PIN Number (e.g. 13)
+
+-------------------------------------------
+Export node:
+-----------------------
+Save your nodes in JSON format
+-------------------------------------------
+Working with Dashboards
+Step : 1
+
+Install the dashboard
+
+Manage Pallete : 
+Install:
+node-red-dashboard
+
+--------------------------------
+To Open Dashboard: (in-Any web browser)
+
+localhost:1880/ui  
+
+
+Assignment:
+-------------------------
+You are free to to refer java script functions
+
+Write a function that should display current data and time in text window in dashboard section.
+
+msg.payload = new Date()
+
+return msg;
+
+---------------------
+Email-Node:
+
+msg.topic = "Sensor-Data";
+msg.payload = "temp : 20";
+return msg;
+
+Less secure apps need to be enabled
+
+To : Email id
+
+Server : smpt.gmail.com
+
+PORT : 465 Secured (checked)
+
+
+UserId : your email id
+Password : your password
+
+-----------------------------------------------------
+MQTT - in  (Node) - Subscriber 
+MQTT-Out )Node) - Publisher
+
+---------------------------------------------------------------------
+ESP32 - Publisher (Connected with real time sensors - eg. DHT22)
+Broker - Ubuntu
+Subscriber - Node-Red
+Data-Display - Node-red Ui
+-----------------------------------------------------------------------
+
+paho-mqtt (python client library for MQTT APPs)
+--------------------------------------------------------------------------
+Publisher Application Python
+1. client create 
+2. connect
+3. publish
+
+Reference:
+
+https://pypi.org/project/paho-mqtt/
+
+https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php
+
+Offcial Github Repository:
+
+https://github.com/eclipse/paho.mqtt.python
+
+--------------------------------------------
+Problem Statement:
+Publish a single message:
+Take message as input : input/raw_input
+topic-name: test/mqtt/message
+broker : running on your hostmahine
+retain : False
+clientid = test123
+keepalive = 60
+qos = 1
+
+
+Test with mosquitto_sub
+
+-------------------
+Refer single message definition below:
+
+
+def single(topic, payload=None, qos=0, retain=False, hostname="localhost",
+           port=1883, client_id="", keepalive=60, will=None, auth=None,
+           tls=None, protocol=paho.MQTTv311, transport="tcp", proxy_args=None):
+
+
+----------------
+Sample code for help:
+
+import paho.mqtt.publish as publish
+
+publish.single("paho/test/single", "boo", hostname="mqtt.eclipse.org")
+
+----------------------------------
+
+#install mqtt client on your host machine (If python version is 3.XX)
+
+pip3 install paho-mqtt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

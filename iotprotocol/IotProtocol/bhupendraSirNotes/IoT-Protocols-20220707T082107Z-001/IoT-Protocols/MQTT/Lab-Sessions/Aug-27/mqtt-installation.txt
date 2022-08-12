@@ -1,0 +1,39 @@
+#SETUP MQTT in Local Environment
+---------------------------------------------------------------------
+#Install a Broker : mosquitto (Open Source Broker)
+sudo apt install mosquitto
+
+#Install publisher and subscriber utility
+sudo apt install mosquitto-clients
+#This will install three utilities on the host machine:
+1. mosquitto_pub ---> Publisher
+2. mosquitto_sub ---> SubScriber
+3. mosquitto_passwd --> used to genered encrypted password
+----------------------------------------------------------------------
+#Managing broker
+-------------------------------------------------------------------
+#Check the status of the broker
+sudo service mosquitto status
+#Start the broker
+sudo service mosquitto start
+#Stop the broker
+sudo service mosquitto stop
+#restart the broker
+sudo service mosquitto restart
+#Location of the mosquitto broker on the host machine
+/usr/sbin
+#configuration file name
+mosquitto.conf
+#configuration file location
+/etc/mosquitto
+#to check which port is running type :
+mosquitto
+#more details e.g. version availble flags to be used:
+mosquitto --help
+-------------------------------------------------------------------------
+
+
+
+
+
+

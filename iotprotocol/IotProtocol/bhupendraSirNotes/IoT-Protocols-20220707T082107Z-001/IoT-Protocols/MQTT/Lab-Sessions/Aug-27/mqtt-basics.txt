@@ -1,0 +1,56 @@
+Three entities need to be working to start the Lab:
+#Publisher ----> mosquitto_pub
+#Subscriber----> mosquitto_sub
+#Broker -------> mosquitto
+Default PORT Number: 1883
+Broker is running on --localhost/ip-address-of-host
+Topic Name : e.g. -- cdac/acts/diot/temp
+-------------------------------------------------------
+First step : Start the subscriber and subscribe to a topic
+------------------------------------------------------------
+mosquitto_sub -t cdac/acts/diot/temperature -h localhost -p 1883 
+#To stop subscriber - use : ctrl+c
+#Detailed description
+man mosquitto_sub
+-t ---> topic name
+-h ---> hostname (Broker Address/Could be numeric (IP)
+-p ---> port number of the broker
+
+Note : Don't close the subscriber terminal -- need to run continuously in order to receive any message
+
+------------------------------------------------------------------------------------------------
+Second Step: (Publish some messsge to broker on the same topic) --Opne New Tab/terminal
+
+mosquitto_pub -t cdac/acts/diot/temperature -h localhost -p 1883 -m "diot class room temp is 27C"
+
+# -m ---> message
+-------------------------------------------------------------------------------------------------
+Todo : Assignment
+-------------------------------------------------------------------------------------------------
+Try to send different messages and check it at subscriber end
+-------------------------------------------------------------------------------------------------
+Note : When running the broker on the same hostmachine we can skip -h and -p 
+in this case publisher and subscriber use the broker running on the host machine
+--------------------------------------------------------------------------------------------------
+mosquitto_sub -t pune/AQI 
+mosquitto_pub -t pune/AQI -m "AQI is 35"
+#However it is good practice to provide -h and -p explicitely
+--------------------------------------------------------------------------------------------------
+#send message Line by Line (stdin)
+mosquitto_pub -t pune/rain/status -h localhost -p 1883 -l
+
+#Public Brokers
+Broker Address : test.mosquitto.org
+port number : 1883
+-----------------------------------------
+mosquitto_sub -t diot/assignment/test -h test.mosquitto.org -p 1883 
+
+#ToDO : Publish your name on above topic using same broker and port number
+mosquitto_pub -t diot/assignment/test -h test.mosquitto.org -p 1883 -l
+
+
+
+
+
+
+
