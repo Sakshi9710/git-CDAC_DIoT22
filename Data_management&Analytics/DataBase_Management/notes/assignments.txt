@@ -1,0 +1,29 @@
+Problem # 1: Write a query to display the member id, member name, city and membership status who are all having life time membership. Hint: Life time membership status is “Permanent”.
+
+
+Problem # 2: Write a query to display the member_name,book code, publication, price and supplier name of the book which has been issued to a member.
+
+
+Problem # 3: Write a query to display the member id, member name who have taken the book with book code 'BL000002'.
+
+Problem # 4: Write a query to display the book code, book title and author of the books whose author name begins with 'P'.
+
+Problem # 5: Write a query to display the total number of Java books available in library with alias column name ‘NO_OF_BOOKS’.
+
+Problem # 6: Write a query to list the category and number of books in each category with alias name ‘NO_OF_BOOKS’.
+
+Problem # 6-1: Write a query to list the category and number of books in each category with alias name ‘NO_OF_BOOKS’ such that the number of books are greater than 2 .
+
+Problem # 7: Write a query to display the number of books published by "Prentice Hall” with the alias name “NO_OF_BOOKS”.
+
+
+Problem # 8: Write a query to display the book code, book title of the books which are issued on the date "1st April 2012".
+
+Problem # 9: Write a query to display the member id, member name, date of registration and expiry date of the members whose membership expiry date is before APR 2013.
+
+Problem # 10: write a query to display the member id, member name, date of registration, membership status of the members who registered before "March 2012" and membership status is "Temporary"
+
+Problem #11: Write a query to display the member id, member name who’s City is CHENNAI or DELHI. Hint:case insenstive search and display the member name in title/sentence case with alias name 'Name'.
+
+Problem #12: Write a query to concatenate book title, author and display in the following format. Book_Title_is_written_by_Author Example: Let Us C_is_written_by_Yashavant Kanetkar Hint: display unique books. Use “BOOK_WRITTEN_BY” as alias name.
+

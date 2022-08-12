@@ -1,0 +1,54 @@
+    
+cd /home/kafka/kafka ***to open the kafka folder
+
+1  ls
+    2  rm -rf examples.desktop 
+    3  cd kafka/
+    4  tar -xvzf ~/Downloads/kafka.tgz 
+    5  cd ..
+    6  cd Downloads/
+    7  ls
+    8  rm -rf kafka.tgz 
+    9  wget https://dlcdn.apache.org/kafka/3.2.0/kafka_2.13-3.2.0.tgz
+   10  ls
+   11  cd ../kafka/
+   12  tar -xvzf ~/Downloads/kafka_2.13-3.2.0.tgz --strip 1
+   13  ls
+   14  nano ~/kafka/config/server.properties 
+   15  sudo nano /etc/systemd/system/zookeeper.service
+   16  sudo nano /etc/systemd/system/kafka.service
+   17  sudo systemctl start kafka
+   18  sudo systemctl status kafka
+   19  sudo systemctl enable zookeeper
+   20  sudo systemctl enable kafka
+   21  ./bin/kafka-topics.sh --create --topic sexy --bootstrap-server localhost:9092
+   22  ./bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+   23  ./bin/kafka-topics.sh --topic sexy --describe --bootstrap-server localhost:9092
+   24  history
+   25  ./bin/kafka-console-producer.sh --topic quickstart-events --describe --bootstrap-server localhost:9092
+   26  ./bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
+   27  ./bin/kafka-console-proconsumer.sh topic quickstart-events --bootstrap-server localhost:9092
+   28  ./bin/kafka-console-producer.sh --topic quickstart-event --from-begining --bootstrap-server localhost:9092
+   29  ./bin/kafka-console-producer.sh --topic quickstart-event --from-beginning --bootstrap-server localhost:9092
+   30  ./bin/kafka-console-producer.sh --topic quickstart-event --bootstrap-server localhost:9092
+   31  pwd
+   32  ./bin/kafka-console-producer.sh --topic quickstart-event --bootstrap-server localhost:9092
+   33  ./bin/kafka-console-producer.sh --topic quisecond_topic bootstrap-server localhost:9092
+   34  ./bin/kafka-console-producer.bat --broker-list 127.0.0.1:9092 --topic first_topic
+   35  ls bin/
+   36  ./bin/kafka-console-producer.sh --broker-list 127.0.0.1:9092 --topic first_topic
+
+
+##Steps For The Installation of Apache Kafka 
+LINK :- https://hevodata.com/blog/how-to-install-kafka-on-ubuntu/
+
+************INSTALLING KAFKA WITH PYTHON COMMAND
+ pip3 install kafka
+pip3 install py4j
+ pip3 install kafka-python
+
+****To run the prg 
+1>first download the irix.csv file
+2>then run the prg with spark-submit file.py file
+3>then run the command: to see the output
+	./bin/kafka-console-consumer.sh --topic Topic bootstrap-server localhost:9092

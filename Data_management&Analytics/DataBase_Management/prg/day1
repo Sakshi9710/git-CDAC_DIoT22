@@ -1,0 +1,212 @@
+ select * from user_objects where OBJECT_TYPE = &#39;TABLE&#39;;
+ select * from user_tab_columns ;
+
+ create table my_first_table
+(
+ rollno number,
+ name varchar2(100),
+ dob date
+);
+
+ drop table my_first_table ;
+ 
+ select * from my_first_table ;
+
+-- alter table my_first_table add(city varchar2(100)) ;
+-- alter table my_first_table drop(city) ;
+
+-- alter table my_first_table rename column rollno to roll_number ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select * from user_tables ;
+select * from user_objects where OBJECT_TYPE = &#39;TABLE&#39;;
+select * from user_tab_columns ;
+
+create table Second_table
+(
+Reg_no number,
+Name varchar2(100),
+DOE date ,
+city varchar2(100)
+);
+
+INSERT ALL
+    INTO Second_table VALUES (023,&#39;sakshi&#39;,&#39;08-oct-2000&#39;,&#39;Nagpur&#39;,&#39;birthday&#39;) 
+    INTO Second_table VALUES (025,&#39;yash&#39;,&#39;25-dec-2000&#39;,&#39;Raipur&#39;,&#39;party&#39;)
+SELECT * FROM dual
+
+
+alter table Second_table add(event_Name varchar2(100)) ;
+INSERT INTO Second_table VALUES (023,&#39;sakshi&#39;,&#39;25-dec-2000&#39;,&#39;Raipur&#39;);
+
+select * from Second_table ;
+
+alter table Second_table rename column event_Name to event_no ;
+alter table Second_table modify (event_no number);
+truncate table Second_table
+
+rename Second_table to my_reg_table ;
+
+INSERT INTO my_reg_table VALUES (023,&#39;sakshi&#39;,&#39;25-dec-2000&#39;,&#39;Raipur&#39;,&#39;08&#39;);
+INSERT INTO my_reg_table VALUES (025,&#39;aastha&#39;,&#39;24-may-2000&#39;,&#39;Raipur&#39;,&#39;08&#39;);
+
+alter table my_reg_table  add(class number) ;
+alter table my_reg_table  drop(city) ;
+
+alter table my_reg_table  rename column Reg_no to Reg_number ;
+
+select * from my_reg_table ;
+
+select count(*) from my_reg_table where Reg_number=&#39;025&#39;;
+
+delete from my_reg_table where Reg_number=&#39;025&#39;;
+
+alter table my_reg_table add(city varchar2(100)) ;
+------------------------------------------------
+
+
+update my_reg_table set city=&#39;Banglore&#39; where Reg_number=&#39;023&#39;;
+
+select * from my_reg_table ;
+
+INSERT ALL
+    INTO my_reg_table VALUES (023,&#39;sakshi&#39;,&#39;08-oct-2000&#39;,&#39;Nagpur&#39;,08,&#39;Pune&#39;) 
+    INTO my_reg_table VALUES (025,&#39;yash&#39;,&#39;25-dec-2000&#39;,&#39;Raipur&#39;,25,&#39;Banglore&#39;)
+    INTO my_reg_table VALUES (017,&#39;nancy&#39;,&#39;08-oct-2000&#39;,&#39;Nagpur&#39;,08,&#39;Pune&#39;) 
+    INTO my_reg_table VALUES (020,&#39;pratiksha&#39;,&#39;25-dec-2000&#39;,&#39;Raipur&#39;,25,&#39;Banglore&#39;)
+SELECT * FROM dual
+
+rollback to after_insert_2;
+select * from my_reg_table ;
+
+update my_reg_table set city=&#39;Mumbai&#39; where city=&#39;Pune&#39;; 
+
+delete from my_reg_table where city=&#39;Banglore&#39;;
+delete from my_reg_table where city=&#39;Pune&#39;;
+
+select * from my_reg_table ;
+
+delete from my_reg_table where city=&#39;Raipur&#39;;
+
+drop table my_reg_table;
+
+select * from my_reg_table ;
+
+INSERT INTO my_reg_table VALUES (023,&#39;sakshi&#39;,&#39;08-oct-2000&#39;,&#39;Nagpur&#39;,08,&#39;Pune&#39;) ;
+INSERT INTO my_reg_table VALUES (023,&#39;sakshi&#39;,&#39;08-oct-2000&#39;,&#39;Nagpur&#39;,08,&#39;Pune&#39;) ;
+
+rollback;
+select * from my_reg_table ;
+
+
+---------------------------------------
+
+ create table institute_table1
+(
+i_id number,
+ i_name varchar2(100),
+ i_city varchar2(100),
+ i_phoneNo number
+);
+
+select * from  institute_table1 ;
+
+INSERT INTO institute_table1 VALUES (023,&#39;CDAC&#39;,&#39;PUNE&#39;,98765432) ;
+INSERT INTO institute_table1 VALUES (025,&#39;MIT&#39;,&#39;BOMBAY&#39;,98765432) ;
+COMMIT ;
+INSERT INTO institute_table1 VALUES (022,&#39;IIT&#39;,&#39;BHILIA&#39;,98765432) ;
+ROLLBACK ;
+INSERT INTO institute_table1 VALUES (021,&#39;BIT&#39;,&#39;DURG&#39;,98765432) ;
+
+select * from institute_table1 ;
+
+select * from institute_table1 where upper(i_city) = upper(&#39;pune&#39;);
+
+
+INSERT INTO institute_table1 VALUES (021,&#39;BIT&#39;,&#39;pUNE&#39;,98765432) ;
+
+--------------------------------------------------------------
+
+ create table members1
+(
+member_no number,
+ member_name varchar2(100),
+member_city varchar2(100),
+ member_status varchar2(100)
+);
+
+select * from  members1 ;
+
+INSERT INTO members1 VALUES (1,&#39;Gaurav&#39;,&#39;PUNE&#39;,&#39;Permanent&#39;) ;
+INSERT INTO members1 VALUES (2,&#39;Sagar&#39;,&#39;Mumbai&#39;,&#39;Permanent&#39;) ;
+INSERT INTO members1 VALUES (3,&#39;Pratik&#39;,&#39;Chennai&#39;,&#39;Temporary&#39;) ;
+INSERT INTO members1 VALUES (4,&#39;Hitesh&#39;,&#39;Banglore&#39;,&#39;Temporary&#39;) ;
+
+select * from members1 where upper(member_status) = upper(&#39;temporary&#39;);
+
+select member_name , member_city ,
+&#39;Welcome &#39; || member_name || &#39; to Pune and parent_city is &#39; ||  member_city Welcome
+from members1 MEM 
+where member_name like &#39;%a%&#39; ;
+
+select * from  members1 ;
+
+select member_name , member_status ,
+&#39;Hi&#39; || member_name || &#39;you are in Following Status : &#39; || member_status Welcome_message
+from members1 MEM 
+-- where member_name like &#39;%a%&#39; ;
+
+--------------------------------------------
+
+create table test1
+(
+name varchar2(10)primary key
+);
+
+insert into test1 values(&#39;gaurav&#39;); --will not create dublicate key if null is added with dublicate name
+insert into test1 values(&#39;gaurav&#39;);
+insert into test1 values(NULL);
+
+select * from test ;
+
+-------------------------------------
+
+create table test_check
+(
+age number check (age&gt;18)
+);
+
+insert into test_check values(19); 
+insert into test_check values(17);
+insert into test_check values(NULL);
+
+select * from test_check ;  
+
+-------------------------------
+
+create table test_check_not_null
+(
+age number not null check (age&gt;18)
+);
+
+insert into test_check_not_null values(19); 
+insert into test_check_not_null values(17);
+insert into test_check_not_null values(NULL);
+
+select * from test_check_not_null ;
+
+insert into ms_members (member_id ,member_name ,city  ,date_register ,date_expire  ,membership_status )
+values('A','sakshi','pune','08-mar-2022','08-sept-2022','Active');

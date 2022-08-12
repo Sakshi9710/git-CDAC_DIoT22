@@ -1,0 +1,134 @@
+---------------------------------------------------------------------------------------------
+**NAME OF THE SUPPLIER , CONTACT , EMAIL , ADDRESS WHO RESIDES IN MUMBAI AND DELHI AND EMAIL DOES NOT END WITH @GMAIL.COM 
+ -----------------------------------------------------------------------------------------------
+ 
+ SELECT SUPPLIER_NAME , CONTACT , EMAIL , ADDRESS 
+ FROM  LMS_SUPPLIERS_DETAILS 
+ WHERE upper(ADDRESS) IN (upper('MUMBAI') , upper('DELHI') ) AND (EMAIL) NOT LIKE ('%@gmail.com') ;
+
+---------------------------------------------------------------------------------------------------------
+ NAME OF THE BOOK THAT WERE  PUBLISHED  IN THE YEAR 2012 AND PRICE POINT IS GREATER THAN 100 
+ -------------------------------------------------------------------------------------------------------------
+ 
+ alter session set nls_date_format = 'dd-Mon-yyyy ' ;
+select sysdate , extract(YEAR from sysdate ) from dual ;
+ 
+ SELECT BOOK_TITLE , PUBLISH_DATE , PRICE
+ FROM LMS_BOOK_DETAILS
+ WHERE extract ( YEAR from PUBLISH_DATE ) = 2012  AND PRICE > 100 ;
+ -------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------
+ 
+ alter session set nls_date_format = 'Mon' ;
+ 
+  SELECT MEMBER_NAME , MEMBERSHIP_STATUS , DATE_REGISTER 
+ FROM LMS_MEMBERS
+ WHERE UPPER(MEMBERSHIP_STATUS) = UPPER('Permanent') AND ( UPPER(DATE_REGISTER) = ('JUN') OR UPPER(DATE_REGISTER) = ('JUL') OR UPPER(DATE_REGISTER) = ('AUG') );
+ 
+ -------------------------------------------------------------------
+ ------------------------------------------------------------------- 
+ 
+ SELECT BOOK_ISSUE_NO , MEMBER_ID ,
+ (DATE_RETURN - DATE_ISSUE) TOTAL_daY
+ FROM LMS_BOOK_ISSUE 
+ WHERE (DATE_RETURNED - DATE_ISSUE) < = 20 ;
+
+-------------------------------------------------------------------------------------------------------
+ -------NAME OF THE BOOK AND THE SUPPLIER NAME (INNER JOIN)
+  -------NAME OF THE BOOK AND THE SUPPLIER NAME ONLY IF THE BOOK HAS A SUPPLIER (INNER JOIN)
+ 
+ SELECT BD.BOOK_TITLE , SD.SUPPLIER_ID 
+ FROM LMS_BOOK_DETAILS BD INNER JOIN LMS_SUPPLIERS_DETAILS SD 
+ ON (BD.SUPPLIER_ID = SD.SUPPLIER_ID ) ;
+ 
+  -------NAME OF THE SUPPLIER THAT HAS NOT SUPPLIED ANY BOOK
+  
+  SELECT SD.SUPPLIER_NAME
+ FROM LMS_SUPPLIERS_DETAILS SD LEFT OUTER JOIN LMS_BOOK_DETAILS BD
+ ON (BD.SUPPLIER_ID = SD.SUPPLIER_ID ) 
+ WHERE SD.SUPPLIER_ID IS NOT NULL ;
+
+ --------------------------------------------------------------
+ 
+   SELECT SD.COL1 SUPPLIER_ID , BD. COL1 BOOK_ID 
+ FROM SETA SD LEFT OUTER JOIN SETB BD
+ ON (BD.COL1 = SD.COL1 ) 
+ WHERE BD.COL1 IS NULL ;
+ 
+ 
+ -----------------------------------------------------------
+ 
+ -------NEED THE NAME OF THE BOOK , PUBLICATION , DATE OF PUBLICATION ALONG WITH SUPPLIER NAME AND HIS CONTACT DETAILS 
+ 
+ 
+   SELECT BD.BOOK_TITLE , BD.PUBLICATION , BD.PUBLISH_DATE , SD.SUPPLIER_NAME , SD.CONTACT 
+ FROM LMS_BOOK_DETAILS  BD INNER JOIN LMS_SUPPLIERS_DETAILS SD
+ ON (BD.SUPPLIER_ID = SD.SUPPLIER_ID ) 
+ 
+ -------------------------------------------------------------------------------
+  
+CREATE TABLE SETA ( COL1 NUMBER );
+CREATE TABLE SETB ( COL1 NUMBER );
+
+INSERT INTO SETA VALUES (1) ;
+INSERT INTO SETA VALUES (2) ;
+INSERT INTO SETA VALUES (3) ;
+INSERT INTO SETA VALUES (4) ;
+INSERT INTO SETA VALUES (5) ;
+
+INSERT INTO SETB VALUES (3) ;
+INSERT INTO SETB VALUES (4) ;
+INSERT INTO SETB VALUES (5) ;
+INSERT INTO SETB VALUES (6) ;
+INSERT INTO SETB VALUES (7) ;
+
+SELECT * FROM SETA ;
+SELECT * FROM SETB ;
+
+---------------------------------------------------------------------
+
+ -------NEED THE NAME OF THE BOOK , PUBLICATION , DATE OF PUBLICATION ALONG WITH SUPPLIER NAME AND HIS CONTACT DETAILS 
+ 
+ 
+   SELECT BD.BOOK_TITLE , BD.PUBLICATION , BD.PUBLISH_DATE , SD.SUPPLIER_NAME , SD.CONTACT 
+ FROM LMS_BOOK_DETAILS  BD INNER JOIN LMS_SUPPLIERS_DETAILS SD
+ ON (BD.SUPPLIER_ID = SD.SUPPLIER_ID ) 
+
+ -----------------------------------------------------------------------
+  
+  ----------NAME OF THE MEMBER , STATUS OF HIS MEMBERSHIP WHO HAVE ISSUED A BOOK BUT NEVER PAID A FINE
+-----DISTINCT = FOR REMOVING DUBLICATE
+  
+ SELECT DISTINCT ME.MEMBER_NAME , ME.MEMBERSHIP_STATUS , BI.FINE_RANGE
+ FROM LMS_BOOK_ISSUE BI INNER JOIN LMS_MEMBERS ME
+ ON (ME.MEMBER_ID = BI.MEMBER_ID ) 
+ WHERE BI.FINE_RANGE IS NULL 
+
+---------------------------------------------------------------------------------------------------
+ 
+ -----------NAME OF THE MEMBER , STATUS OF HIS MEMBERSHIP WHO HAVE ISSUED A BOOK AND  PAID A FINE MORE THAN 74 RS
+ 
+SELECT DISTINCT ME.MEMBER_NAME , ME.MEMBERSHIP_STATUS , BI.FINE_RANGE
+ FROM LMS_BOOK_ISSUE BI INNER JOIN LMS_MEMBERS ME
+ ON (ME.MEMBER_ID = BI.MEMBER_ID ) 
+ WHERE BI.FINE_RANGE > 'R3'
+ 
+ SELECT DISTINCT *
+ FROM LMS_MEMBERS INNER JOIN LMS_BOOK_ISSUE 
+ ON (LMS_MEMBERS.MEMBER_ID = LMS_BOOK_ISSUE.MEMBER_ID ) 
+ INNER JOIN LMS_FINE_DETAILS ON (LMS_BOOK_ISSUE.FINE_RANGE = LMS_FINE_DETAILS.FINE_RANGE)
+ WHERE LMS_FINE_DETAILS.FINE_AMOUNT > 74 ;
+=============================================================================================================
+ 
+  
+ -----NAME OF THE SUPPLIER WHO HAS NOT SUPPLIED ANY BOOK AND LIVES IN pUNE MUMBAI AND DELHI
+ 
+  SELECT DISTINCT *
+ FROM LMS_BOOK_DETAILS  BD RIGHT OUTER JOIN LMS_SUPPLIERS_DETAILS SD
+ ON (BD.SUPPLIER_ID = SD.SUPPLIER_ID ) 
+ WHERE BD.SUPPLIER_ID is NULL AND UPPER(ADDRESS) IN ('PUNE','MUMBAI','DELHI')
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+ 

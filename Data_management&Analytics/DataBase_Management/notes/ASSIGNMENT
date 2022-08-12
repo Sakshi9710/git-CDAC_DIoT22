@@ -1,0 +1,116 @@
+-------------provide the supplier name , their city , no of books supplied based on the person who has supplied most books comes at the top
+
+select  sd.SUPPLIER_ID , sd.SUPPLIER_NAME , sd.ADDRESS , count(bd.SUPPLIER_ID ) book_supplied
+from LMS_SUPPLIERS_DETAILS sd inner join LMS_BOOK_DETAILS bd
+on ( sd.SUPPLIER_ID = bd.SUPPLIER_ID )
+group by sd.SUPPLIER_ID , sd.SUPPLIER_NAME , sd.ADDRESS
+order by count(*) desc
+
+--**when we want supplier who hasn't supplied any book
+----**note : we would have book who have not ben issued at the bottom of the output
+select  sd.SUPPLIER_ID , sd.SUPPLIER_NAME , sd.ADDRESS , count(bd.SUPPLIER_ID) book_supplied
+from LMS_SUPPLIERS_DETAILS sd left join LMS_BOOK_DETAILS bd
+on ( sd.SUPPLIER_ID = bd.SUPPLIER_ID )
+group by sd.SUPPLIER_ID , sd.SUPPLIER_NAME , sd.ADDRESS
+order by count(bd.SUPPLIER_ID) desc ;
+
+-------------------------------------------------------
+------provide the book code and book name based on the least issue book comes at the top
+----**note : we would have book who have not ben issued at the bottom of the output
+
+select bd.BOOK_CODE , count(bi.BOOK_CODE) issue_book
+from LMS_BOOK_DETAILS bd left join LMS_BOOK_ISSUE bi
+on ( bd.BOOK_CODE = bi.BOOK_CODE )
+group by bd.BOOK_CODE  
+order by issue_book desc
+
+------------------------------------------------------------------------
+-----------------provide the name of the member , total fine based on the most fined member comes at the top
+---------note : we would have members who have not been issued book at the bottom of the output
+
+select ms.MEMBER_ID , MS.MEMBER_NAME , sum(fd.fine_amount) fine
+from LMS_MEMBERS ms 
+left join LMS_BOOK_ISSUE bi
+on (ms.MEMBER_ID = bi.MEMBER_ID) 
+left join LMS_FINE_DETAILS fd
+on (bi.FINE_RANGE = fd.FINE_RANGE)
+group by ms.MEMBER_ID , MS.MEMBER_NAME 
+order by sum(fd.fine_amount) desc NULLS LAST ;
+
+select ms.MEMBER_ID , MS.MEMBER_NAME , 
+CASE WHEN sum(fd.fine_amount) IS NULL THEN 0 ELSE sum(fd.fine_amount) END fine
+from LMS_MEMBERS ms 
+left join LMS_BOOK_ISSUE bi
+on (ms.MEMBER_ID = bi.MEMBER_ID) 
+left join LMS_FINE_DETAILS fd
+on (bi.FINE_RANGE = fd.FINE_RANGE)
+group by ms.MEMBER_ID , MS.MEMBER_NAME 
+order by sum(fd.fine_amount) desc NULLS LAST ;
+
+
+------------------------------------------------------------------------------
+-------------------
+
+
+---------------ASSIGNMENT ----------------------------------
+
+-- total number of books placed on given rack number 
+-- such that edition of the book is atleast 3 -- ( done)
+-- and it is supplied by a supplier who has a rediff / gmail account  -- ( done)
+-- and the book is issued to the students who are permanent in status -- ( done )
+/* sample O/P
+RACK_NUM	Total
+A1			2
+A3			1
+*/
+
+SELECT BD.RACK_NUM , COUNT(DISTINCT BI.BOOK_CODE) TOTAL
+FROM  LMS_BOOK_DETAILS BD
+INNER JOIN LMS_SUPPLIERS_DETAILS SD
+ON ( SD.SUPPLIER_ID = BD.SUPPLIER_ID )
+INNER JOIN LMS_BOOK_ISSUE BI
+ON ( BD.BOOK_CODE = BI.BOOK_CODE)
+INNER JOIN LMS_MEMBERS MS
+ON ( MS.MEMBER_ID = BI.MEMBER_ID )
+
+WHERE ( BD.BOOK_EDITION > 3 ) AND ( UPPER(SD.EMAIL) LIKE ('%@GMAIL.COM') OR UPPER(SD.EMAIL) LIKE ('%@REDIFF.COM') ) AND (UPPER(MS.MEMBERSHIP_STATUS) = 'PERMANENT')
+GROUP BY BD.RACK_NUM  
+
+-------------------
+SELECT RACK_NUM , COUNT(*) TOTAL
+FROM  LMS_BOOK_DETAILS 
+WHERE ( BOOK_EDITION > 3 ) 
+GROUP BY RACK_NUM  
+
+
+-----------------------------------------------------------------------------------------------------------------------
+ -- total of number of all the books that have been issued to a member who stays in Delhi / Mumbai / Pune 
+ -- and book that was issued has arrived later than 1st July 2000
+ -- and supplied by a supplier who belongs to  Delhi / Mumbai / Pune / Chennai
+/* 
+ -- Sample o/p
+ member_name  city  total 
+ Amruta       Pune   1 
+*/ 
+
+SELECT MS.MEMBER_NAME , MS.CITY , COUNT(DISTINCT BI.BOOK_CODE) TOTAL
+FROM LMS_MEMBERS MS INNER JOIN LMS_BOOK_ISSUE BI
+ON ( MS.MEMBER_ID=BI.MEMBER_ID )
+INNER JOIN  LMS_BOOK_DETAILS BD 
+ON ( BD.BOOK_CODE = BI.BOOK_CODE)
+INNER JOIN LMS_SUPPLIERS_DETAILS SD
+ON ( BD.SUPPLIER_ID = SD.SUPPLIER_ID )
+WHERE ( UPPER(CITY) IN ('DELHI','MUMBAI','PUNE') ) AND ( BI.DATE_ISSUE > TO_DATE('01-07-2000', 'DD-MM-YYYY') ) AND ( UPPER(SD.ADDRESS) IN  ('DELHI','MUMBAI','PUNE','CHENNAI') )
+GROUP BY MS.MEMBER_NAME , MS.CITY 
+
+SELECT DISTINCT BI.BOOK_ISSUE_NO , MS.MEMBER_ID , MS.CITY , COUNT(*) TOTAL
+FROM LMS_MEMBERS MS
+INNER JOIN LMS_BOOK_ISSUE BI
+ON ( MS.MEMBER_ID=BI.MEMBER_ID )
+WHERE UPPER(CITY) IN ('DELHI','MUMBAI','PUNE')
+GROUP BY BI.BOOK_ISSUE_NO , MS.MEMBER_ID , MS.CITY 
+
+
+
+
+

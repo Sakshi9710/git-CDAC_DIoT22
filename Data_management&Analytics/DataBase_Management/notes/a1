@@ -1,0 +1,31 @@
+--------Problem # 1: Write a query to display the member id, member name, city and membership status 
+who are all having life time membership. Hint: Life time membership status is “Permanent”.
+
+select  member_id, member_name, city , membership_status
+from  LMS_MEMBERS
+where lower(membership_status)='permanent'
+ 
+---------------------Problem # 2: Write a query to display the member_name,book code, publication, 
+price and supplier name of the book which has been issued to a member.
+
+select *
+from LMS_MEMBERS me
+where me.MEMBER_ID in 
+(select bi.MEMBER_ID from  LMS_BOOK_ISSUE bi 
+where bi.BOOK_CODE in
+( select bd.BOOK_CODE from LMS_BOOK_DETAILS bd where exists
+( select * from LMS_SUPPLIERS_DETAILS sd where (bd.SUPPLIER_ID =sd.SUPPLIER_ID  )
+)
+)
+)
+
+select *
+from LMS_MEMBERS me
+where me.MEMBER_ID in 
+(select bi.MEMBER_ID from  LMS_BOOK_ISSUE bi 
+where bi.BOOK_CODE in
+( select bd.BOOK_CODE from LMS_BOOK_DETAILS bd where exists
+( select * from LMS_SUPPLIERS_DETAILS sd where (bd.SUPPLIER_ID =sd.SUPPLIER_ID  )
+)
+)
+)

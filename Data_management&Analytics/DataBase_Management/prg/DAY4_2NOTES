@@ -1,0 +1,49 @@
+--------------------------------aGGREGATE FUNCTION = TAKE IN ENTIRE SET GIVES ONE OUTPUT -------------------------------------
+
+CREATE TABLE SETA ( COL1 VARCHAR2(10) , COL2 VARCHAR2(10) );
+
+INSERT INTO SETA VALUES ('PUNE','GAURAV') ;
+INSERT INTO SETA VALUES ('PUNE','SAGAR') ;
+INSERT INTO SETA VALUES ('DELHI','DEVANSHU') ;
+INSERT INTO SETA VALUES ('DELHI','PRATIK') ;
+INSERT INTO SETA VALUES ('DELHI','DEVANSH;) ;
+INSERT INTO SETA VALUES ('JAIPUR','SHRUTI') ;
+
+
+SELECT COL1,COUNT(*) FROM SETA GROUPBY COL1 ;
+
+----------------------------------------------------------------------------------------------------------------------------------------
+/*count of members in each city */
+
+select city , count(*) from LMS_MEMBERS group by city ;
+---------------------------------------------------
+-------------------count of members against their status
+
+select MEMBERSHIP_STATUS status, count(*) cnt from LMS_MEMBERS group by MEMBERSHIP_STATUS ;
+
+---------------------------------------------------
+-----------------count of members against their status
+
+select MEMBERSHIP_STATUS status, count(*) cnt from LMS_MEMBERS group by MEMBERSHIP_STATUS ;
+
+---------------------------------------------------------------
+-------count of suppliers who stay in pune mumbai or delhi against there city
+
+select ADDRESS city , count(*) cnt from  LMS_SUPPLIERS_DETAILS where  lower(ADDRESS) in ('pune' ,'mumbai' ,'delhi') group by ADDRESS  ;
+
+---------------------------------------------------------
+---no of books in each category that are placed in rack num a1,a2,a3
+
+select RACK_NUM , count(*) cnt from LMS_BOOK_DETAILS where RACK_NUM in ('A1','A2','A3') group by RACK_NUM
+-----------------------------------------------------------------------------
+
+---------------------------------------------------------
+---no of books in each category that are placed in rack num a1,a2,a3
+
+select RACK_NUM , count(*) cnt from LMS_BOOK_DETAILS where RACK_NUM in ('A1','A2','A3') group by RACK_NUM
+-----------------------------------------------------------------------------
+
+----no of book issued in the month of june july august
+
+
+select extract(month from DATE_ISSUE )  , count(*) cnt_of_book from LMS_BOOK_ISSUE where extract(month from DATE_ISSUE ) in ('04','05')  group by extract(month from DATE_ISSUE ) 

@@ -1,0 +1,268 @@
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE SETA ( COL1 VARCHAR2(10) , COL2 VARCHAR2(10) );
+
+INSERT INTO SETA VALUES ('PUNE','GAURAV') ;
+INSERT INTO SETA VALUES ('PUNE','SAGAR') ;
+INSERT INTO SETA VALUES ('DELHI','DEVANSHU') ;
+INSERT INTO SETA VALUES ('DELHI','PRATIK') ;
+INSERT INTO SETA VALUES ('DELHI','DEVANSH') ;
+INSERT INTO SETA VALUES ('JAIPUR','SHRUTI') ;
+
+select col1 , count(*) from SETA group by col1
+
+------------------------------------------------------------------
+	              GROUP BY
+--------count of members against their status and city
+
+select MEMBERSHIP_STATUS , CITY , count(*) cnt from  LMS_MEMBERS group by MEMBERSHIP_STATUS , CITY 
+
+
+-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+----------------count of supplier against their respective category of email accounts category should be gmail/yahoo/other
+
+decode(EMAIL,'%@gmail.com','gmail','%@yahoo.com','yahoo','NULL') ;
+if EMAIL = '%@gmail.com' then 'gmail' elseif CATEGORY = '%@yahoo.com' then 'yahoo' else 'other';
+
+select decode( substr(email,instr(email,'@')+1) ,'gmail.com','gmail','yahoo.com','yahoo','other') category , count(*) cnt 
+from LMS_SUPPLIERS_DETAILS
+group by decode( substr(email,instr(email,'@')+1) ,'gmail.com','gmail','yahoo.com','yahoo','other') ;  
+
+--------------------------------------------------
+
+select substr(email,instr(email,'@'))  category , count(*) cnt_against_category
+from LMS_SUPPLIERS_DETAILS sd 
+where EMAIL like '%@gmail.com' or EMAIL like '%@yahoo.com' 
+group by substr(email,instr(email,'@')) 
+
+select substr(email,instr(email,'@')+1)  category , count(*) cnt_against_category
+from LMS_SUPPLIERS_DETAILS sd 
+group by substr(email,instr(email,'@')+1) 
+
+-------------------------------------------------------------------------------------
+------------------------category of book , total no of books under that category such that category has more than two books
+
+select CATEGORY , count(*) total_no_of_book
+from LMS_BOOK_DETAILS
+group by CATEGORY 
+having count(*) > 2
+
+-------------------------------------------------------------------------------------
+------------------------book code and name of the book which have been isued atleast twice
+
+select LMS_BOOK_ISSUE.BOOK_CODE , LMS_BOOK_DETAILS.BOOK_CODE , LMS_BOOK_DETAILS.BOOK_TITLE , count(*) cnt 
+from LMS_BOOK_ISSUE 
+inner join LMS_BOOK_DETAILS
+on (LMS_BOOK_ISSUE.BOOK_CODE = LMS_BOOK_DETAILS.BOOK_CODE )
+group by LMS_BOOK_ISSUE.BOOK_CODE , LMS_BOOK_DETAILS.BOOK_CODE , LMS_BOOK_DETAILS.BOOK_TITLE 
+having count(*) > 2
+-----------------------------------------------------------------------
+---------------------book code and name of the book which was issued more than 4 times and has more than 0 supplier 
+-----------(NOTE : java how to prg has two book code bcoz of diff publish date)
+
+select LMS_BOOK_DETAILS.SUPPLIER_ID , LMS_BOOK_ISSUE.BOOK_CODE , LMS_BOOK_DETAILS.BOOK_CODE , LMS_BOOK_DETAILS.BOOK_TITLE , count(*) cnt 
+from LMS_BOOK_ISSUE 
+inner join LMS_BOOK_DETAILS
+on (LMS_BOOK_ISSUE.BOOK_CODE = LMS_BOOK_DETAILS.BOOK_CODE )
+group by LMS_BOOK_DETAILS.SUPPLIER_ID , LMS_BOOK_ISSUE.BOOK_CODE , LMS_BOOK_DETAILS.BOOK_CODE , LMS_BOOK_DETAILS.BOOK_TITLE 
+having count(*) > 0 and LMS_BOOK_DETAILS.SUPPLIER_ID is not null
+
+----------------------------------------------------------------------------------------------
+CASE
+    WHEN count(*)>=2 THEN 'Y'
+    WHEN count(*)<2 THEN 'N'
+    ELSE 'NA'
+END
+--------------------------------------------------------------------------------------------------------------
+------------------------name of the supplier along with his contact number with a flag y or n 
+----y = he has supplied a book which has been issued to two or more members
+-----------n  = he has supplied a book which has been issued to less than two members
+--------- na = if he hasn't supplied any book
+-----------
+------------ supplier_name      contact           flag
+
+
+SELECT LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME ,  LMS_SUPPLIERS_DETAILS.CONTACT , 
+CASE
+    WHEN TEMP.flag>=2 THEN 'Y'
+    WHEN TEMP.flag<2 THEN 'N'
+    ELSE 'NA'
+END flag
+FROM LMS_SUPPLIERS_DETAILS 
+right JOIN 
+( select LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME ,  LMS_SUPPLIERS_DETAILS.CONTACT , count(*) flag
+from LMS_SUPPLIERS_DETAILS 
+LEFT OUTER join LMS_BOOK_DETAILS
+on ( LMS_SUPPLIERS_DETAILS.SUPPLIER_ID = LMS_BOOK_DETAILS.SUPPLIER_ID )
+LEFT OUTER JOIN LMS_BOOK_ISSUE 
+on ( LMS_BOOK_DETAILS.BOOK_CODE = LMS_BOOK_ISSUE.BOOK_CODE )
+GROUP BY LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME ,  LMS_SUPPLIERS_DETAILS.CONTACT ) TEMP
+ON ( LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME = TEMP.SUPPLIER_NAME ) 
+
+
+
+SELECT LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME , LMS_SUPPLIERS_DETAILS.SUPPLIER_ID ,  LMS_SUPPLIERS_DETAILS.CONTACT , 
+CASE
+    WHEN TEMP.flag>=2 THEN 'Y'
+    WHEN TEMP.flag<2 THEN 'N'
+    WHEN TEMP.flag=NULL THEN 'NA'
+    ELSE '-'
+END flag
+FROM LMS_SUPPLIERS_DETAILS 
+LEFT JOIN 
+
+( select LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME ,  LMS_SUPPLIERS_DETAILS.CONTACT , count(*) flag
+from LMS_SUPPLIERS_DETAILS 
+LEFT OUTER join LMS_BOOK_DETAILS
+on ( LMS_SUPPLIERS_DETAILS.SUPPLIER_ID = LMS_BOOK_DETAILS.SUPPLIER_ID )
+LEFT OUTER JOIN LMS_BOOK_ISSUE 
+on ( LMS_BOOK_DETAILS.BOOK_CODE = LMS_BOOK_ISSUE.BOOK_CODE )
+GROUP BY LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME ,  LMS_SUPPLIERS_DETAILS.CONTACT ) TEMP
+
+ON ( LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME = TEMP.SUPPLIER_NAME ) 
+
+
+SELECT LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME , LMS_SUPPLIERS_DETAILS.SUPPLIER_ID ,  LMS_SUPPLIERS_DETAILS.CONTACT , 
+CASE
+    WHEN TEMP.flag>=2 THEN 'Y'
+    WHEN TEMP.flag<2 THEN 'N'
+    ELSE 'NA'
+END flag
+FROM LMS_SUPPLIERS_DETAILS 
+LEFT JOIN 
+
+( select LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME ,  LMS_SUPPLIERS_DETAILS.CONTACT , count(*) flag
+from LMS_SUPPLIERS_DETAILS 
+INNER join LMS_BOOK_DETAILS
+on ( LMS_SUPPLIERS_DETAILS.SUPPLIER_ID = LMS_BOOK_DETAILS.SUPPLIER_ID )
+LEFT OUTER JOIN LMS_BOOK_ISSUE 
+on ( LMS_BOOK_DETAILS.BOOK_CODE = LMS_BOOK_ISSUE.BOOK_CODE )
+GROUP BY LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME ,  LMS_SUPPLIERS_DETAILS.CONTACT ) TEMP
+
+ON ( LMS_SUPPLIERS_DETAILS.SUPPLIER_NAME = TEMP.SUPPLIER_NAME ) 
+
+-------------------------------------	ORDER BY ---------------------------------------------------
+
+
+SELECT <MANDOTARY>
+FROM <MANDOTARY>
+ORDER BY
+
+-------------
+-----NAME OF THE MEMBER ORDERED ON THEIR NAME ASCENDING ORDER
+
+SELECT * FROM LMS_MEMBERS ORDER BY MEMBER_NAME ;
+
+SELECT * FROM LMS_MEMBERS ORDER BY MEMBERSHIP_STATUS , MEMBER_NAME ;
+
+SELECT * FROM LMS_MEMBERS ORDER BY MEMBERSHIP_STATUS DESC , MEMBER_NAME ; ---DESC FOR DECENDING
+
+SELECT * FROM LMS_BOOK_DETAILS ORDER BY SUPPLIER_ID ASC NULLS FIRST ; -- FOR NULL COLUMN
+
+-----------------------------------------------------------------------------
+------------------LIST THE BOOK_NAMES AND ISSUANCES , DATE OF EXPECTED RETURN
+--SUCH THAT THE BOOKS THAT ARE TO BE RETURNED AT THE EARLIEST ARE SEEN AT THE TOP
+
+SELECT BI.MEMBER_ID , BD.BOOK_TITLE , MS.MEMBER_NAME , BI.DATE_RETURN
+FROM LMS_BOOK_DETAILS BD
+INNER JOIN LMS_BOOK_ISSUE BI
+ON ( BD.BOOK_CODE = BI.BOOK_CODE )
+ INNER JOIN LMS_MEMBERS MS
+ ON ( BI.MEMBER_ID = MS.MEMBER_ID )
+ORDER BY BI.DATE_RETURN
+
+-------------------------------------------
+-----------------------------
+------------------------LIST ALL THE MEMBERS SUCH THAT THE OLDEST MEMBER (THE VERY FIRST MEMBER TO MY LMS ) OF MY LMS APPEAR AT THE TOP
+
+SELECT MEMBER_NAME , DATE_REGISTER FROM LMS_MEMBERS ORDER BY DATE_REGISTER 
+
+-----------------------------
+------------------------LIST ALL THE MEMBERS SUCH THAT THE LONGEST DURATION OF MEMBERSHIP MEMBER APPEAR ON TOP 
+
+SELECT *
+FROM LMS_MEMBERS 
+ORDER BY ( SYSDATE - DATE_REGISTER ) DESC 
+
+
+SELECT SYSDATE FROM DUAL
+
+-----------------------------
+------------------------LIST ALL THE MEMBERS SUCH THAT THE LONGEST DURATION OF MEMBERSHIP MEMBER APPEAR ON TOP 
+
+SELECT *
+FROM LMS_MEMBERS 
+ORDER BY ( SYSDATE - DATE_REGISTER ) DESC , ( DATE_EXPIRE > SYSDATE ) DESC
+
+
+SELECT SYSDATE FROM DUAL
+SELECT *
+FROM LMS_MEMBERS 
+WHERE ( DATE_EXPIRE > SYSDATE ) 
+ORDER BY ( SYSDATE - DATE_REGISTER ) DESC
+
+-------------provide the supplier name , their city , no of books supplied based on the person who has supplied most books comes at the top
+
+select  sd.SUPPLIER_ID , sd.SUPPLIER_NAME , sd.ADDRESS , count(*) book_supplied
+from LMS_SUPPLIERS_DETAILS sd inner join LMS_BOOK_DETAILS bd
+on ( sd.SUPPLIER_ID = bd.SUPPLIER_ID )
+group by sd.SUPPLIER_ID , sd.SUPPLIER_NAME , sd.ADDRESS
+order by count(*) desc
+
+--**when we want supplier who hasn't supplied any book
+----**note : we would have book who have not ben issued at the bottom of the output
+select  sd.SUPPLIER_ID , sd.SUPPLIER_NAME , sd.ADDRESS , count(*) book_supplied
+from LMS_SUPPLIERS_DETAILS sd left join LMS_BOOK_DETAILS bd
+on ( sd.SUPPLIER_ID = bd.SUPPLIER_ID )
+group by sd.SUPPLIER_ID , sd.SUPPLIER_NAME , sd.ADDRESS
+order by count(*) desc
+
+-------------------------------------------------------
+------provide the book code and book name based on the least issue book comes at the top
+----**note : we would have book who have not ben issued at the bottom of the output
+
+select bd.BOOK_CODE , count(bi.BOOK_CODE) issue_book
+from LMS_BOOK_DETAILS bd left join LMS_BOOK_ISSUE bi
+on ( bd.BOOK_CODE = bi.BOOK_CODE )
+group by bd.BOOK_CODE  
+order by issue_book desc
+
+select bd.BOOK_CODE , count(bi.BOOK_CODE) issue_book
+from LMS_BOOK_DETAILS bd inner join LMS_BOOK_ISSUE bi
+on ( bd.BOOK_CODE = bi.BOOK_CODE )
+group by bd.BOOK_CODE  
+order by issue_book desc
+
+------------------------------------------------------------------------
+-----------------provide the name of the member , total fine based on the most fined member comes at the top
+---------note : we would have members who have not been issued book at the bottom of the output
+
+select bi.MEMBER_ID , count(*) fine
+from LMS_MEMBERS ms 
+inner join LMS_BOOK_ISSUE bi
+on (ms.MEMBER_ID = bi.MEMBER_ID) 
+inner join LMS_FINE_DETAILS fd
+on (bi.FINE_RANGE = fd.FINE_RANGE)
+group by bi.MEMBER_ID
+order by FINE_RANGE desc
+
+------------------------------------------------------------------------------
+-------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+select * from user_constraints where TABLE_NAME = 'TEST' ;
+select * from user_cons_columns ;
+
+create table test
+(
+name varchar2(10) ,
+constraint my_first_primary_key_cons primary key(name)
+);
+
+insert into test values ('Sakshi')
+
+create table test
+(
+name varchar2(10) ,
+constraint my_first_primary_key_cons primary key(name)
+);
+
+-------------------create a table named book(book_ISBN(PK) , book_title(not null) , book category['c'/java] , edition , book_barcode_number(unique))
+
+insert 3 rows
+ISBN,"let us c " , c , 1 , 9898
+ISBN,"let us c " , c , 2 , 9896
+ISBN,"python Coding" , java , null , 7878
+ISBN,"java code" , java , null , 65465
+ISBN,NULL ,"c",3,8989
+
+----------------------------------------------------------------------
+drop table book ;
+select * from user_constraints where TABLE_NAME = 'BOOK' ;
+select * from user_cons_columns ;
+
+create table book 
+(
+book_ISBN number primary key ,
+book_title varchar2(100) not null,
+book_category varchar2(100) check (book_category in('C','java')),
+book_edition number ,
+book_barcode_no  number unique 
+);
+
+
+select * from book; 
+
+insert into book values(12345,'let us C ' , 'C' , 1 , 9898);
+insert into book values(3456,'let us C ' , 'C' , 2 , 9896);
+insert into book values(63214,'java code' , 'java' , NULL , 65465);
+insert into book values(78654,NULL ,"C",3,8989);
+
+------------------------------------
+at max 4000 bit can be written in 
+
+------------------------------------
+--------------------------------------------
+
+
+drop table ms_members;
+create table ms_members
+(
+member_id varchar2(10) primary key,
+member_name varchar2(30) ,
+city varchar2(20) ,
+date_register date ,
+date_expire date ,
+membership_status varchar2(15) 
+);
+
+drop table lms_fine_details;
+create table lms_fine_details
+(
+fine_range varchar2(3) primary key ,
+fine_amount number(10,2) ,
+max_days_delayed number 
+);
+
+drop table lms_book_details ;
+create table lms_book_details
+(
+book_code varchar2(10) primary key ,
+book_title varchar2(100) ,
+book_category varchar2(15) ,
+author varchar2(30) ,
+publication varchar2(30) ,
+publish_date date ,
+book_edition number ,
+price number(8,2) ,
+rack_num varchar2(3) ,
+date_arrival date ,
+supplier_id varchar2(3) , --foreign key 
+constraint fk_1 foreign key (supplier_id) references lms_supplier_details(Supplier_id)
+);
+
+
+drop table lms_supplier_details;
+create table lms_supplier_details
+(
+Supplier_id varchar2(3) primary key,
+supplier_name varchar2(30) ,
+address varchar2(30) ,
+contact number(10) ,
+email varchar2(15)
+);
+
+drop table lms_book_issue;
+create table lms_book_issue
+(
+book_issue_no number , --primary key,
+member_id varchar2(10) ,--foreign key ,
+book_code varchar2(10) ,--foreign key ,
+date_issue date ,
+date_return date ,
+date_returned date ,
+fine_range varchar2(3) ,
+constraint pk_book_issue_no primary key (book_issue_no) ,
+constraint fk_mem_id foreign key (member_id) references ms_members(member_id) ,
+constraint fk_bookdetails foreign key (book_code) references lms_book_details(book_code) ,
+constraint fk_finedetails foreign key (fine_range) references lms_fine_details(fine_range) 
+);
+
+select * from ms_members ;
+
+alter table lms_book_issue add(supplier_name varchar2(30))  ------to add new object and assigning constraint to it
+alter table lms_book_issue add constraint fk_supplier_name foreign key (supplier_name) references lms_supplier_details(supplier_name)
+
+select * from ms_members ;
+
+---------------------------------------------
+creating a table
+
+create/insert
+	parent
+	child
+drop
+	child
+	process
