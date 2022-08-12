@@ -1,5 +1,0 @@
-
-dht11/temperature
-27.40
-dht11/humdity
-60.00
