@@ -1,0 +1,288 @@
+INSTRUCTION SHOULD BE WRITTEN IN CAPITAL LETTER
+ALWAYS CREATE A  NEW DIRECTORY INSIDE WHICH DOCKERFILE IS WRITTEN
+*****rEMEMBER WORKDIR IS RELATED TO CONTAINER 
+	IT IS NOT REALTED TO YOUR SYSTEM**************
+
+
+============================================================
+// to check the status
+sudo service docker status
+
+//to see the port no of docker
+ ps -aux | grep dockerd
+
+//to pull a image
+sudo docker pull<image-name>
+
+//to run the command to see if docker is rightly installed
+//To spin a unnamed container
+sudo docker run hello-world
+
+//to see the docker images file detail
+#Image name is case sensitive.
+ sudo docker images | grep hello-world
+ sudo docker image ls | grep hello-world
+
+-------------------------------------------------------------
+Step1 : Create a DockerFile
+step2: create docker image
+	
+	sudo docker build -t pgdiot22 .
+-t ==> tag name =>image name to be maintained in locally system / hostmachine
+image will be saves as "pgdiot22" for Dockerfile
+
+step3: sudo docker build -t pgdiot22 .
+	sudo docker images | grep pgdiot22
+
+step4:spin the container  sudo docker container run  pgdiot22 
+	
+----------------------------------------------------------------
+////////Steps for DockerFile
+#pull the apline image from docker hub
+FROM alpine
+
+//cmd is used to run set of instruction
+CMD ["echo","Helo From PG-DIoT 2022"]
+
+-------------------------------------------
+
+ sudo docker ps -a //list all the container - running,stopped,paused,exited
+
+ sudo docker ps //list all the running container
+
+----------------
+how to spin a named container in interactive mode:
+ref image:
+
+sudo docker run --name cu -it ubuntu /bin/bash
+cu =>container name
+root@80215ac05bca:/# 
+root@80215ac05bca:/#  //ubuntu shell
+
+docker container start -i cu //to open the named container
+
+
+------------------------------------------------------------------
+		3 August 2022
+------------------------------------------------------------------
+
+docker pull ubuntu:18.04 //image downloaded by ubunto of version 20.04
+
+docker run -it ubuntu:18.04 
+
+root@9cd9e866754e
+
+---------------------------------------------------
+To see the container details
+		docker inspect <container-id>
+--------------------------------------------------------
+docker create =>create a docker container but never start it
+docker run = docker create + docker start
+
+--------------------------------------------------------------
+///we have to run the image in interactive mode
+-----------------------------------------------------------------
+           
+sudo docker build -t prg1 . //docker file contain run prg
+
+*********
+FROM ubuntu
+
+RUN apt-get update -y \
+&& apt-get install net-tools
+********************
+
+ sudo docker run prg1 //to run the prg
+
+sudo docker run -it prg1 
+
+sudo docker run -it prg1  bash ///for running with cmd command
+
+#sudo docker images
+docker inspect <image name> ----details about images
+
+===================================================================
+HOW TO CONTAINERIZE A PYTHON APPLICATION
+===================================================================
+
+1.CREATE A PYTHON PRG WITH .py EXTEMSION
+2.build the file ----------------sudo docker build -t addtwono .
+3.run  ----sudo docker run -it addtwono
+or ---- sudo docker run --name addcal -it addtwono:v0
+*********
+Enter Your Name :sakshi
+Welcome sakshi to the World of Container !! 
+You are about to Start your Journey With Python and Docker 
+Enter First Number : 10
+Enter Two Number : 60
+Addition of Two Number :  70
+********
+
+4.**WORKDIR ----make a directory in the container in the given path
+n copy the the file in the  given path
+
+================================================================
+
+docker start conatiner-id
+
+docker exec -it conatiner-id sh/bash
+
+****docker attach conatiner-id
+
+*** -d for detech mode
+===================================================================
+			DOCKER ATTACH
+====================================================================
+
+******IN ONE TERMINAL
+ sudo docker run -it ubuntu:20.04 bash
+[sudo] password for rajesh: 
+root@abd2121c2088:/# mkdir Document
+
+******IN ANOTHER TERMINAL
+docker attach abd2121c2088
+root@abd2121c2088:/# mkdir Document
+root@abd2121c2088:/# ls
+
+=========================================================================
+***************************
+****DOCKER IMAGE
+docker images -----------show all docker images in the system
+	or 
+docker image ls
+***********************
+****DOCKER DELETE COMMAND
+sudo docker rmi -f <image-id> ------delete the docker image forcefully
+
+docker rm <comtainer-id> ---------remove docker
+
+docker rm -f $(docker ps -a -q)  -----delete all the container
+
+docker rm -f $( docker image ls -q) ---delete all the docker image
+****************************
+*****DOCKER LISTING
+docker container ls --(list all the running container) || docker ps
+	
+docker container ls -a || docker ps -a --(list all the container)
+
+docker ps -a -q ///list all the container id
+
+ docker image ls -q ----list all the image-id
+
+docker images -q
+*****************************************
+***DOCKER VOLUME ---- Manage volumes
+  The  docker  volume  command  has subcommands for managing data volumes. A data volume is a
+       specially-designated directory that by-passes storage driver management.
+
+docker volume ls --list all the volumes docker manages
+
+=====================================================
+****************BIND MOUNT PRATICAL :
+****************you can access the host file/directory from the container
+
+sudo docker run -d \
+-it \
+--name ubuntu-os \
+--mount type=bind,source=/home/rajesh/Documents,target=/dockerc \
+ubuntu:20.04
+
+docker exec -it 1c00fe231826 bash //to run the container
+
+==============================================
+*****************VOLUMES
+
+ docker volume create <volume-name>
+------default directory will be /var/lob/docker/volumes  #root user
+
+lets create a volume name - mydata
+
+ docker volume create mydata
+
+docker inspect mydata -------volume mydata details
+
+**** IN THE FOLDER MYDATA _data CONTAINS FILES
+[
+    {
+        "CreatedAt": "2022-08-06T17:12:26+05:30",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/mydata/_data",
+        "Name": "mydata",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+*****
+
+docker run -d -it \
+--name container1 \
+-v mydata:/mydatac \
+ubuntu:20.04
+
+docker exec -it container1 bash
+
+//with one container we can mao multiple volume
+
+ docker volume rm <volume-name> --remove a volume
+docker container rm <container-name> ---remove a container
+
+
+docker run -d -it \
+--name container1 \
+-v mydata:/mydatac \
+-v mydata1:/data \
+ubuntu:20.04
+
+========================================================================
+***********docker commit ---- Create a new image from a existing container's
+
+docker commit <container-id> <image-name>
+
+ docker run -d -it \
+> --name container1 \
+> -v mydata:/mydatac \
+> -v mydata1:/data \
+> img1
+
+docker exec -it container1 bash
+
+ docker exec -it container1 bash
+
+docker rename old name newname
+===========================================================
+docker save
+
+ docker save -o img1.tar img1 --img1.tar will be saved in current directory
+
+**********DOCKER LOAD -Load an image from a tar archive or STDIN
+
+ docker load < img1.tar -----first remove image , then load it and do it in the where img1.tar is there
+
+ docker images
+=============================================================================
+
+sudo docker cp img1.tar ad7e04170c4c:/mydatac --will copy the file from host os to the container folder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

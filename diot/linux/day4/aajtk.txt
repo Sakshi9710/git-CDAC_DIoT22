@@ -1,0 +1,704 @@
+    1  sudo apt  install openssh
+    2  sudo apt  install openssh-server
+    3  sudo service ssh status
+    4  sudo apt  install openssh-server
+    5  gcc
+    6  sudo apt install gcc
+    7  sudo su
+    8  anydesk
+    9  sudo apt  install openssh
+   10  sudo su
+   11  sudo apt install
+   12  sudo update
+   13  su - rajesh
+   14  gccc 
+   15  gcc pq1.c -o pq1.out
+   16  gcc pq1.c -pq1.out
+   17  gcc pq1.c -o pq1.out
+   18  ./pq1.out
+   19  gcc pq2.c -opq2.out
+   20  gcc pq2.c -pq2.out
+   21  gcc pq2.c -0 pq2.out
+   22  gcc pq2.c -o pq2.out
+   23  gcc pq2.c -o pq2.out
+   24  ./pq2.out
+   25  gcc pq2.c -o pq2.out
+   26  ./pq2.out
+   27  gcc pq3.c -o pq3.out
+   28  ./pq3.out
+   29  gcc pq3.c -o pq3.out
+   30  ./pq3.out
+   31  gcc pq5.c -o pq5.out
+   32  zxxdhy
+   33  fr
+   34  g
+   35  vc
+   36  ikkkkkkkkkkkk
+   37  gcc fahcel.c -o fe.out
+   38  ./fe.out
+   39  gcc circum.c -o circum.out
+   40  ./circum.out
+   41  gcc circum.c -o circum.out
+   42  ./circum.out
+   43  gcc emp.c -emp.out
+   44  gcc emp.c -o emp.out
+   45  ./emp.out
+   46  gcc emp.c -o emp.out
+   47  ./emp.out
+   48  gcc emp.c -o emp.out
+   49  ./emp.out
+   50  gcc emp.c -o emp.out
+   51  ./emp.out
+   52  gcc emp.c -o  ep.out
+   53  ./ep.out
+   54  gcc emp.c -o  ep.out
+   55  ./ep.out
+   56  gcc emp.c -o  ep.out
+   57  ./ep.out
+   58  gcc emp.c -o  ep.out
+   59  ./ep.out
+   60  gcc q3.c -q3.out
+   61  gcc q3.c -o q3.out
+   62  ./q3.out
+   63  gcc q3.c -o q3.out
+   64  ./q3.out
+   65  gcc q3.c -o q3.out
+   66  ./q3.out
+   67  gcc q3.c -o q3.out
+   68  ./q3.out
+   69  gcc q3.c -o q3.out
+   70  ./q3.out
+   71  gcc q3.c -o q3.out
+   72  ./q3.out
+   73  gcc q3.c -o q3.out
+   74  ./q3.out
+   75  gcc q4.c -o q4.out
+   76  ./q4.out
+   77  gcc q4.c -o q4.out
+   78  ./q4.out
+   79  gcc q4.c -o q4.out
+   80  ./q4.out
+   81  gcc q4.c -o q4.out
+   82  ./q4.out
+   83  fgfh
+   84  gcc q4.c -o q4.out
+   85  ./q4.out
+   86  ts
+   87  gcc q4.c -o q4.out
+   88  ./q4.out
+   89  4e
+   90  ls
+   91  ./q4.out
+   92  jb
+   93  gcc q4.c -o q4.out
+   94  ./q4.out
+   95  ls
+   96  cat q4.c
+   97  gcc q4.c -o q4.out
+   98  ./q4.out
+   99  gcc q4.c -o q4.out
+  100  ./q4.out
+  101  gcc q4.c -o q4.out
+  102  ./q4.out
+  103  .q4.out
+  104  ./q4.out
+  105  gcc q4.c -o.out
+  106  gcc q4.c -o q.out
+  107  ./q.out
+  108  gcc q4.c -o e.out
+  109  ./e.out
+  110  gcc q4.c -o c.out
+  111  ./c.out
+  112  gcc q4.c -o q4.out
+  113  ./q4.out
+  114  gcc q4.c -o q4.out
+  115  ./q4.out
+  116  gcc q4.c -o q4.out
+  117  ./q4.out
+  118  gcc q4.c -o q4.out
+  119  ./q4.out
+  120  gcc q4.c -o q4.out
+  121  ./q4.out
+  122  gcc q4.c -o q4.out
+  123  ./q4.out
+  124  gcc q4.c -o q4.out
+  125  gcc practice.c -o practice.out
+  126  practice.c -o practice.out
+  127  gcc practice.c -o pratice.out
+  128  gcc practice.c -o practice.out
+  129  gcc practice.c -o prac.out
+  130  gcc practice.c -o pract.out
+  131  gcc structem.c -o structem.out
+  132  gcc strucem.c -o stru.out
+  133  gcc practice.c -o practice.out
+  134  gcc strucem.c -o stru.out
+  135  ./stru.out
+  136  gcc strucem.c -o stru.out
+  137  ./stru.out
+  138  gcc strucem.c -o stru.out
+  139  ./stru.out
+  140  gcc strucem.c -o stru.out
+  141  ./stru.out
+  142  gcc strucem.c -o stru.out
+  143  gcc q1.c -o q1.out
+  144  Q1.c -o Q1.out
+  145  gcc Q1.c -Q1.out
+  146  ls /usr/lib/gccc/x86-64-linux.gmu/7/include
+  147  ls /user/lib/gccc/x86-64-linux.gmu/7/include
+  148  ls /user/lib/gcc/x86-64-linux.gmu/7/include
+  149  ls /user/lib/gcc/x86_64-linux-gmu/7/include
+  150  ls /usr/lib/gcc/x86_64-linux-gmu/7/include
+  151  apropos string
+  152  man 3 wcslen
+  153  gcc strucem.c -o structcem.out
+  154  gcc unions.c -o unions.out
+  155  ./unions.out
+  156  man offsetof
+  157  man string
+  158  gcc areaofcircle.c
+  159  gcc areaofcircle.c -o ar2.out
+  160  ./ar2.out
+  161  gcc areaofcircle.c -o ar2.out
+  162  ./ar2.out
+  163  gcc areaofcircle.c -o ar2.out
+  164  ./ar2.out
+  165  gcc areaofcircle.c -o ar2.out
+  166  ./ar2.out
+  167  gcc areaofcircle.c -o ar2.out
+  168  ./ar2.out
+  169  gcc areaofcircle.c -o ar2.out
+  170  ./ar2.out
+  171  gcc areaofcircle.c -o ar2.out
+  172  ./ar2.out
+  173  gcc areaofcircle.c -o ar2.out
+  174  ./ar2.out
+  175  gcc fercel.c -o fercel.out
+  176  ./frecel.out
+  177  ./fercel.out
+  178  gcc areaofreac.c -o ar.out
+  179  ./ar.out
+  180  gcc areaofreac.c -o ar.out
+  181  ./ar.out
+  182  gcc areaofreac.c -o ar.out
+  183  ./ar.out
+  184  gcc areaofreac.c -o ar.out
+  185  ./ar.out
+  186  gcc areaofreac.c -o ar.out
+  187  ./ar.out
+  188  gcc areaofreac.c -o ar.out
+  189  ./ar.out
+  190  gcc areaofreac.c -o ar.out
+  191  ./ar.out
+  192  gcc areaofreac.c -o ar.out
+  193  ./ar.out
+  194  gcc areaofreac.c -o ar.out
+  195  ./ar.out
+  196  gcc uppercase.c -o uppercase.c
+  197  gcc uppercase.c -o uppercase.out
+  198  ./uppercase.out
+  199  gcc uppercase.c -o uppercase.out
+  200  ./uppercase.out
+  201  gcc uppercase.c -o uppercase.out
+  202  ./uppercase.out
+  203  PR
+  204  PRATIKSHA
+  205  ./uppercase.out
+  206  gcc upp.c -o upp.out
+  207  ./upp.out
+  208  gcc upp.c -o upp.out
+  209  ./upp.out
+  210  gcc upp.c -o upp.out
+  211  ./upp.out
+  212  gcc upp.c -o upp.out
+  213  ./upp.out
+  214  gcc upp.c -o upp.out
+  215  ./upp.out
+  216  gcc upp.c -o upp.out
+  217  ./upp.out
+  218  gcc upp.c -o upp.out
+  219  ./upp.out
+  220  gcc lower.c -o lower.out
+  221  ./lower.out
+  222  gcc lower.c -o lower.out
+  223  ./lower.out
+  224  gcc lower.c -o lower.out
+  225  ./lower.out
+  226  gcc uup.c -o upp.out
+  227  gcc upp.c -o upp.out
+  228  ./upp.out
+  229  gcc upp.c -o upp.out
+  230  gcc intrestcal.c -o int.out
+  231  ./int.out
+  232  man ascii
+  233  gcc palindrome.c -o palin.out
+  234  ./palin.out
+  235  ./int.out
+  236  ./palin.out
+  237  gcc palindrome.c -o palin.out
+  238  ./palin.out
+  239  gcc palindrome.c -o palin.out
+  240  ./palin.out
+  241  gcc palindrome.c -o palin.out
+  242  ./palin.out
+  243  gcc palindrome.c -o palin.out
+  244  ./palin.out
+  245  gcc palindrome.c -o palin.out
+  246  ./palin.out
+  247  gcc palindrome.c -o palin.out
+  248  ./palin.out
+  249  gcc palindrome.c -o palin.out
+  250  ./palin.out
+  251  gcc palindrome.c -o palin.out
+  252  ./palin.out
+  253  gcc palindrome.c -o palin.out
+  254  ./palin.out
+  255  gcc even.c -o even.out
+  256  ./even.out
+  257  gcc even.c -o even.out
+  258  ./even.out
+  259  gcc odd.c -o odd.out
+  260  ./odd.out
+  261  gcc odd.c -o odd.out
+  262  ./odd.out
+  263  gcc odd.c -o odd.out
+  264  ./odd.out
+  265  gcc prime.c -o prime.out
+  266  gcc palindrome.c -o palin.out
+  267  ./palin.out
+  268  gcc palindrome.c -o palin.out
+  269  ./palin.out
+  270  gcc palindrome.c -o palin.out
+  271  ./palin.out
+  272  gcc palindrome.c -o palin.out
+  273  ./palin.out
+  274  gcc palindrome.c -o palin.out
+  275  ./palin.out
+  276  gcc prime.c -o prime.out
+  277  ./prime.out
+  278  gcc prime.c -o prime.out
+  279  ./prime.out
+  280  11
+  281  ./prime.out
+  282  gcc fibo.c -o fibo.out
+  283  ./fibo.out
+  284  gcc fibo.c -o fibo.out
+  285  ./fibo.out
+  286  gcc fibo.c -o fibo.out
+  287  ./fibo.out
+  288  gcc fibo.c -o fibo.out
+  289  ./fibo.out
+  290  gcc fibo.c -o fibo.out
+  291  ./fibo.out
+  292  comparing_pointer.c -pointer.out
+  293  comparing_pointer.c -o pointer.out
+  294  comparing_pointer.c -o po.out
+  295  gcc array_pointer.c -o ap.out
+  296  ./ap.out
+  297  gcc array_pointer.c -o ap.out
+  298  ./ap.out
+  299  gcc array_pointer.c -o ap.out
+  300  ./ap.out
+  301  gcc sum_pointer.c -o sum.ouy
+  302  gcc sum_pointer.c -o sum.out
+  303  ./sum.out
+  304  gcc sum_pointer.c -o sum.out
+  305  .
+  306  gcc sum_pointer.c -o sum.out
+  307  ./sum.out
+  308  gcc sum_pointer.c -o sum.out
+  309  ./sum.out
+  310  array_pointer.c -o ap.out
+  311  gcc array_pointer.c -o ap.out
+  312  ./ap.out
+  313  gcc reverse_series.c -o res.out
+  314  ./res.out
+  315  gcc reverse_series.c -o res.out
+  316  ./res.out
+  317  gcc reverse_series.c -o res.out
+  318  ./res.out
+  319  gcc a[5].c -o a[5].out
+  320  ./a[5].out
+  321  gcc a[5].c -o a[5].out
+  322  ./a[5].out
+  323  gcc a[5].c -o a[5].out
+  324  gcc a[5].c -o a[5].out
+  325  ./a[5].out
+  326  gcc a[5].c -o a[5].out
+  327  ./a[5].out
+  328  gcc a[5].c -o a[5].out
+  329  ./a[5].out
+  330  gcc a[5].c -o a[5].out
+  331  gcc a[5].c -o a[5].out
+  332  ./a[5].out
+  333  gcc a[5].c -o p.out
+  334  p.out
+  335  ./p.out
+  336  gcc bday.c -o bday.out
+  337  ./bday.out
+  338  gcc bday.c -o bday.out
+  339  ./bday.out
+  340  gcc bday.c -o bday.out
+  341  ./bday.out
+  342  gcc bday.c -o bday.out
+  343  ./bday.out
+  344  gcc bday.c -o bday.out
+  345  ./bday.out
+  346  gcc bday.c -o bday.out
+  347  ./bday.out
+  348  gcc bday.c -o bday.out
+  349  ./bday.out
+  350  gcc bday.c -o bday.out
+  351  ./bday.out
+  352  gcc bday.c -o bday.out
+  353  ./bday.out
+  354  gcc bday.c -o bday.out
+  355  ./bday.out
+  356  pwd
+  357  ip addr
+  358  ip config
+  359  ipconfig -a
+  360  ifconfig -a
+  361  inconfig -a
+  362  sudo apt install net-tools
+  363  sudo apt -get upgrade
+  364  sudo apt-get upgrade
+  365  sudo apt install ./<file>.deb
+  366  sudo apt install ./visualstudio.deb
+  367  cd $HOME
+  368  pwd
+  369  cd ~home
+  370  cd ~
+  371  pwd
+  372  cd /home/rajesh
+  373  pwd
+  374  sudo su
+  375  whoami
+  376  sudo su
+  377  whereis pwd
+  378  whereis python
+  379  whereis python3
+  380  mkdir -v linux
+  381  ls
+  382  mkdir -v file
+  383  ls
+  384  echo $ linux || mkdir -v practice
+  385  ls
+  386  cd
+  387  cd linux
+  388  exit
+  389  cd linux ||mkdir -v practice
+  390  cd linux && mkdir -v practice
+  391  ls
+  392  exit
+  393  ls
+  394  cd linux && mkdir -v practice
+  395  cd
+  396  cd linux/practice && mkdir -v day1
+  397  cd
+  398  cd ~/linux/practice
+  399  pwd
+  400  cd
+  401  cd $ HOME/linux/practice/day1
+  402  cd $ HOME / linux /pratice / day1
+  403  cd $HOME linuX
+  404  cd $HOME 
+  405  PWD
+  406  pwd
+  407  cd ~/linux/practice/day1
+  408  pwd
+  409  cd
+  410  cd $HOME/linux
+  411  cd $HOME/linux/practice/day1
+  412  cd ..
+  413  cd $HOME/linux/practice/day1
+  414  cd ..
+  415  cd day1
+  416  cd
+  417  cd $HOME/linux/practice/day1
+  418  cd ../..
+  419  cd $HOME/linux/practice/day1
+  420  cd ../../..
+  421  whereis linux
+  422  cd
+  423  mkdir -v elxp
+  424  ls
+  425  cd elxp
+  426  ls
+  427  cd
+  428  mkdir -p 1/2/3/4
+  429  cd 1
+  430  mkdir -p pratice/day1/day2/day3/day4
+  431  cd praytice
+  432  ls
+  433  cd pratice
+  434  cd
+  435  tree
+  436  sudo apt install tree
+  437  tree
+  438  cd pratice
+  439  cd 1
+  440  ls
+  441  cd pratice
+  442  ls
+  443  cd day1
+  444  ls
+  445  cd day2
+  446  ls
+  447  cd day3
+  448  ls
+  449  cd day4
+  450  ls
+  451  cd
+  452  echo $HOME
+  453  cd ~home
+  454  touch
+  455  touch 1.txt
+  456  ls
+  457  cat 1.txt
+  458  "hello this is my first file" > 1.txt
+  459  echo "hello this is my first file" > 1.txt
+  460  cat 1.txt
+  461  echo "hello this is my first file" > 1
+  462  mkdir -p 2.txt
+  463  echo "hello this is my first file" > 2.txt
+  464  cat 2.txt
+  465  echo "hello this is my first file" > 2.txt
+  466  man python
+  467  python -version
+  468  python3
+  469  python
+  470  python3
+  471  pyrhon 3
+  472  python3
+  473  cd python_nancy/day1/
+  474  ls
+  475  python3 first.py
+  476  python3 cal.py
+  477  python3 Q1.py
+  478  python3 Q2.py
+  479  python3. Q3.py
+  480  python3 Q3.py
+  481  python3 Q3.py
+  482  ls
+  483  cd 1
+  484  ls
+  485  cd .
+  486  cd..
+  487  cd ..
+  488  cd 1
+  489  rm -rf practice_dir/
+  490  ls
+  491  cd ..
+  492  rm -rf /
+  493  ls
+  494  cd 1
+  495  rm -rf 2_dir/
+  496  pwd
+  497  rm -rf 2/
+  498  ls
+  499  mkdir test
+  500  ls
+  501  cd pratice
+  502  cd pratice/
+  503  mkdir 1.txt
+  504  ls
+  505  echo "hi" > ../pratice/1.txt
+  506  echo "hi" > 1.txt
+  507  touch 1.txt
+  508  echo "hi" > 1.txt
+  509  echo "hi" > ../pratice/1.txt
+  510  echo "hi" > 1
+  511  ls
+  512  cat 1
+  513  rm -rf ../pratice
+  514  mkdir -p 1/2/3/4
+  515  ls
+  516  cd 1
+  517  tree
+  518  cd 2/3
+  519  cd ../..
+  520  cd 2/3
+  521  pwd
+  522  cd ../..
+  523  touch 1.tx
+  524  ls
+  525  rm -rf 1.tx/
+  526  ls
+  527  rm -rf 1.tx/
+  528  ls
+  529  cd 2/3
+  530  cd ../.. && echo "nancy" >1.txt
+  531  ls
+  532  cat 1.txt
+  533  cd  cd 2/3
+  534  cd 2/3
+  535  echo "nancy" ~/../../1/nan.txt
+  536  cat nan.txt
+  537  echo "nancy" ~/1/1.txt
+  538  echo "nancy" ~/1/nan.txt
+  539  cat nan.txt
+  540  cat 1.txt
+  541  echo "nancy" ~/1/nan.txt
+  542  ls
+  543  echo "hi" >../../1.txt
+  544  echo "hi" >../../nan.txt
+  545  cat nan.txt
+  546  cat 1.txt
+  547  ls
+  548  echo "nancy" > 4/4.txt
+  549  cat 4.txt
+  550  cd 4
+  551  cat 4.txt
+  552  echo "Hello" >../../2.txt
+  553  cd 2
+  554  cd../..
+  555  cd ../..
+  556  cat 2.txt
+  557  ls
+  558  cd 3/4/
+  559  mkdir -v ../../../nancy
+  560  mkdir ../../sakshi
+  561  cd 1
+  562  cd ../../..
+  563  ls
+  564  cd 2
+  565  ls
+  566  ls -l
+  567  cd ../..
+  568  ls -l
+  569  ls -a
+  570  ls -lh
+  571  ls -r
+  572  ls _R
+  573  ls_R
+  574  ls -R
+  575  cd 1
+  576  ls -R
+  577  ls -lt
+  578  ls -l
+  579  ls -alh
+  580  ls -lh
+  581  ls -r
+  582  ls -R
+  583  ls -lh
+  584  ls -lt
+  585  pyhton3 Q1.py
+  586  python Q1.py
+  587  python3 Q1.py
+  588  python3 Q2.py
+  589  123
+  590  python3 Q2.py
+  591  123
+  592  python3 Q2.py
+  593  121
+  594  python3 Q2.py
+  595  234
+  596  python3 Q2.py
+  597  python3 Q1.py
+  598  python3 Q5.py
+  599  python3 Q3.py
+  600  python3 Q4.py
+  601  python3 Q2.py
+  602  python3 Q3.py
+  603  python3 q6.py
+  604  python3 Q6.py
+  605  python3 q6.py
+  606  python3 Q6.py
+  607  cd
+  608  ls
+  609  cd linux
+  610  ls
+  611  mkdir -v day4
+  612  ls
+  613  echo "1\n2" > file.txt
+  614  cd day4
+  615  echo "1\n2" > file.txt
+  616  cat file.txt
+  617* echo "" > file.txt
+  618  echo " 2" >>file.txt
+  619  cat file.txt
+  620  echo "2" >>file.txt
+  621  cat file.txt
+  622  echo "3">file2.txt && echo "4" >>file2.txt
+  623  cat file2.txt
+  624  echo "5">file3.txt && echo "6" >>file3.txt
+  625  cat file3.txt
+  626  cat file.txt file2.txt file3.txt
+  627  echo file.txt file2.txt file3.txt >result.txt
+  628  cat result.txt
+  629  echo "file.txt file2.txt file3.txt" >result.txt
+  630  cat result.txt
+  631  rm -rf result.txt
+  632  ls
+  633  cat file.txt file2.txt file3.txt >result.txt
+  634  cat result.txt
+  635  tty
+  636  echo "communication between  /dev/pts/2"
+  637  echo "communication between /dev/pts/2"
+  638  echo "communication between /dev/pts/2" > dev/pts/1
+  639  echo "communication between /dev/pts/2" > dev/pts/0
+  640  echo "communication between /dev/pts/2" > dev/pts/1
+  641  echo "communication between /dev/pts/2" > /dev/pts/1
+  642  ls
+  643  cd
+  644  ls
+  645  cd python_nancy
+  646  ls
+  647  cd day1
+  648  ls
+  649  cat -n cal.py
+  650  cd
+  651  cd linux
+  652  cd day4
+  653  ls
+  654  mkdir res.txt
+  655  ls
+  656  cat 1.txt > res.txt
+  657  ls
+  658  cat file.txt > res.txt\
+  659  cat file.txt > res.txt
+  660  cat res.txt
+  661  mkdir -v data.txt
+  662  cat file.txt > data.txt
+  663  echo " hello" >data.txt
+  664  echo " hello" > next.txt
+  665  cat next.txt
+  666  echo "sakshi" > next1.txt
+  667  echo "nancy" >> next1.txt
+  668  cat next1.txt >>next.txt
+  669  cat next.txt
+  670  cat file.txt >>result.txt
+  671  cat result.txt
+  672  cat
+  673  cat > file.txt
+  674  cat file.txt
+  675  cat >nancy.txt
+  676  cat nancy.txt
+  677  cat >>nancy.txt
+  678  cat nancy.txt
+  679  cat >>file.txt
+  680  cat file.txt
+  681  cat >file.txt
+  682  cat file.txt
+  683  cat file.txt | wc
+  684  cat file.txt
+  685  cat file.txt | wc
+  686  cat > file.txt
+  687  cat file.txt | wc
+  688  tail file.txt
+  689  nl file.txt | tail
+  690  cat >>file.txt
+  691  cat file.txt
+  692  tail file.txt
+  693  nl file.txt | tail
+  694  tail file.txt
+  695  cat file.txt | wc
+  696  cat < file.txt
+  697  cat < file.txt >  file1.txt
+  698  cat file1.txt
+  699  cat < file.txt >  file7.txt
+  700  cat file7.txt
+  701  cat < nancy.txt >>  file7.txt
+  702  cat file7.txt
+  703  history
+  704  history >aajtk.txt

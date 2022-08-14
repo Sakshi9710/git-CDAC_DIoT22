@@ -1,0 +1,148 @@
+rajesh@DIOT9:~$ cd
+rajesh@DIOT9:~$ ls
+ 1           examples.desktop   python_nancy
+ 1.txt       file               snap
+ 2.txt       linux              sum_pointer.c
+ bday.c      Music              Templates
+ bday.out    Pictures          'Untitled Document 1'
+ Desktop     pq1.out           'Untitled Document 1cds'
+ Documents   pq2.out            Videos
+ Downloads   pq3.out            xdsxdxcffdsazsewderxcfdxderxcfdecfdrcr
+ elxp        Public
+rajesh@DIOT9:~$ cd linux
+rajesh@DIOT9:~/linux$ ls
+practice
+rajesh@DIOT9:~/linux$ mkdir -v day4
+mkdir: created directory 'day4'
+rajesh@DIOT9:~/linux$ ls
+day4  practice
+rajesh@DIOT9:~/linux$ echo "1\n2" > file.txt
+rajesh@DIOT9:~/linux$ cd day4
+rajesh@DIOT9:~/linux/day4$ echo "1\n2" > file.txt
+rajesh@DIOT9:~/linux/day4$ cat file.txt
+1\n2
+rajesh@DIOT9:~/linux/day4$ echo "1" > file.txt
+rajesh@DIOT9:~/linux/day4$ echo " 2" >>file.txt
+rajesh@DIOT9:~/linux/day4$ cat file.txt
+1
+ 2
+rajesh@DIOT9:~/linux/day4$ echo "2" >>file.txt
+rajesh@DIOT9:~/linux/day4$ cat file.txt
+1
+ 2
+2
+rajesh@DIOT9:~/linux/day4$ cat file.txt
+1
+2
+rajesh@DIOT9:~/linux/day4$ echo "3">file2.txt && echo "4" >>file2.txt
+rajesh@DIOT9:~/linux/day4$ cat file2.txt
+3
+4
+rajesh@DIOT9:~/linux/day4$ echo "5">file3.txt && echo "6" >>file3.txt
+rajesh@DIOT9:~/linux/day4$ cat file3.txt
+5
+6
+rajesh@DIOT9:~/linux/day4$ cat file.txt file2.txt file3.txt
+1
+2
+3
+4
+5
+6
+rajesh@DIOT9:~/linux/day4$ echo file.txt file2.txt file3.txt >result.txt
+rajesh@DIOT9:~/linux/day4$ cat result.txt
+file.txt file2.txt file3.txt
+rajesh@DIOT9:~/linux/day4$ echo "file.txt file2.txt file3.txt" >result.txt
+rajesh@DIOT9:~/linux/day4$ cat result.txt
+file.txt file2.txt file3.txt
+rajesh@DIOT9:~/linux/day4$ rm -rf result.txt
+rajesh@DIOT9:~/linux/day4$ ls
+file2.txt  file3.txt  file.txt
+rajesh@DIOT9:~/linux/day4$ cat file.txt file2.txt file3.txt >result.txt
+rajesh@DIOT9:~/linux/day4$ cat result.txt
+1
+2
+3
+4
+5..........................................................................................
+6
+rajesh@DIOT9:~/linux/day4$ tty
+/dev/pts/0
+rajesh@DIOT9:~/linux/day4$ 
+
+rajesh@DIOT9:~/python_nancy/day1$ cat -n cal.py
+     1	
+     2	a=input("Enter value of a=")
+     3	b=input("Enter value of b=")
+     4	a=int (a)
+     5	b=int(b)
+     6	c=a+b
+     7	print(c)
+     8	
+     9	d=int(input("Enter value of a="))
+    10	e=int(input("Enter value of b="))
+    11	f=d+e;
+    12	print(f)
+
+rajesh@DIOT9:~/linux/day4$ echo " hello" > next.txt
+rajesh@DIOT9:~/linux/day4$ cat next.txt
+ hello
+rajesh@DIOT9:~/linux/day4$ echo "sakshi" > next1.txt
+rajesh@DIOT9:~/linux/day4$ echo "nancy" >> next1.txt
+rajesh@DIOT9:~/linux/day4$ cat next1.txt >>next.txt
+rajesh@DIOT9:~/linux/day4$ cat next.txt
+ hello
+sakshi
+nancy
+
+
+.,...................................................................
+cat < file.txt >  file7.txt
+rajesh@DIOT9:~/linux/day4$ cat file7.txt
+hello
+iot
+c
+python
+protocol
+sec
+uri
+ty\
+nkc
+cnkjd
+nckjr
+nhkjedc
+ncnc
+kj
+nckjd
+
+ckjd
+nkd
+jhnkjec
+d
+
+cat < nancy.txt >>  file7.txt
+rajesh@DIOT9:~/linux/day4$ cat file7.txt
+hello
+iot
+c
+python
+protocol
+sec
+uri
+ty\
+nkc
+cnkjd
+nckjr
+nhkjedc
+ncnc
+kj
+nckjd
+
+ckjd
+nkd
+jhnkjec
+d
+"my name is nancy"
+my nam is sakshi
+........................................................................................
+
